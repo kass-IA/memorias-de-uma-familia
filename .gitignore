@@ -3,5 +3,4 @@ fotos/mae/api key.txt
 *.env
 .env*
 
-# Configurações do Claude Code
-.claude/
+
