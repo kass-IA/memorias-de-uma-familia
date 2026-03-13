@@ -1,0 +1,94 @@
+/* ============================================================
+   MEMÓRIAS DE UMA FAMÍLIA — layout.css
+   Layout geral e componentes compartilhados
+   ============================================================ */
+
+/* ─── Layout geral ─────────────────────────────────────────── */
+.page-wrapper {
+  padding-top: 62px;
+  min-height: 100vh;
+}
+
+
+/* ─── Componentes gerais ────────────────────────────────────── */
+.divider-ornament {
+  text-align: center;
+  color: var(--color-accent);
+  opacity: 0.35;
+  letter-spacing: 0.8rem;
+  font-size: 0.9rem;
+  margin: var(--sp-lg) 0;
+  transition: color var(--t-smooth);
+}
+
+.page-footer {
+  text-align: center;
+  padding: var(--sp-xl) var(--sp-md) var(--sp-lg);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  transition: border-color var(--t-smooth);
+}
+
+.footer-brand-text {
+  font-family: var(--font-heading);
+  font-style: italic;
+  color: var(--color-accent);
+  font-size: 0.92rem;
+  display: block;
+  margin-bottom: 4px;
+  transition: color var(--t-smooth);
+}
+
+/* Prose / texto corrido */
+.prose {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: 620px;
+}
+
+/* ─── Lightbox (compartilhado em todas as páginas) ───────────── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t-fast);
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity var(--t-fast);
+  line-height: 1;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+}

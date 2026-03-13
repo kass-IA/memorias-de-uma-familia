@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bebê -Memórias de uma Família</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌳</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+  <link rel="stylesheet" href="css/bebe.css" />
+  <link rel="stylesheet" href="css/countdown.css" />
+  <link rel="stylesheet" href="css/birthday.css" />
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onerror="this.onerror=null;this.src='https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js'"></script>
+</head>
+<body data-page="bebe">
+
+  <!-- ═══════════════════════════════════════
+       NAVEGAÇÃO
+  ═══════════════════════════════════════ -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      Memórias <span>de uma Família</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="familia.html">Família</a></li>
+      <li><a href="mae.html">Mãe</a></li>
+      <li><a href="pai.html">Pai</a></li>
+      <li><a href="bebe.html" class="active">Bebê</a></li>
+      <li><a href="pet.html">Pet</a></li>
+      <li><a href="galeria.html">Galeria</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       CONTEÚDO PRINCIPAL
+  ═══════════════════════════════════════ -->
+  <main class="page-wrapper">
+
+    <!-- HERO DO BEBÊ -->
+    <section class="bebe-profile-hero">
+
+      <!-- Estrelas decorativas -->
+      <div class="floating-stars" aria-hidden="true">
+        <span class="star">✦</span>
+        <span class="star">✦</span>
+        <span class="star">✦</span>
+        <span class="star">✦</span>
+        <span class="star">✦</span>
+        <span class="star">✦</span>
+      </div>
+
+      <a href="index.html" class="btn-back">← Voltar</a>
+
+      <!-- Foto de perfil do bebê -->
+      <div class="profile-photo-large anim-fade-up" data-photo-key="bebe_main">
+        <span class="profile-ph-icon" data-baby-icon>👶</span>
+        <span class="profile-ph-label" data-baby-ph>Foto do bebê</span>
+      </div>
+
+      <!-- Nome e tagline -->
+      <h1 class="profile-name anim-fade-up delay-1" data-baby-name>Bebê</h1>
+      <p class="profile-tagline anim-fade-up delay-2">Filho(a) de Kassi e Natan</p>
+
+      <!-- Seletor de gênero (grande) -->
+      <div class="baby-gender-bar anim-fade-up delay-2" role="group" aria-label="Escolha o gênero">
+        <button class="gender-btn girl-btn" onclick="selectGender('girl')" aria-label="Menina">
+          <span class="btn-emoji">🎀</span> Menina
+        </button>
+        <button class="gender-btn boy-btn" onclick="selectGender('boy')" aria-label="Menino">
+          <span class="btn-emoji">⚓</span> Menino
+        </button>
+      </div>
+
+      <!-- Mensagem de revelação dinâmica -->
+      <p class="reveal-message anim-fade-up delay-2" id="revealMsg">
+        Quem será?
+      </p>
+
+      <!-- Badge do gênero selecionado -->
+      <div class="gender-badge anim-fade-up delay-3" id="genderBadge" style="display:none">
+        <span data-baby-badge></span>
+      </div>
+
+      <span class="ornament">✦ ✦ ✦</span>
+
+    </section><!-- /bebe-profile-hero -->
+
+    <!-- ─── INFORMAÇÕES DO BEBÊ ─── -->
+    <div class="baby-content">
+
+      <div class="baby-card-grid anim-fade-up">
+
+        <div class="baby-info-card">
+          <span class="baby-info-icon">👶</span>
+          <p class="baby-info-label">Nome</p>
+          <p class="baby-info-value" data-baby-name>A revelar</p>
+        </div>
+
+        <div class="baby-info-card">
+          <span class="baby-info-icon" data-baby-icon>🤰</span>
+          <p class="baby-info-label">Gênero</p>
+          <p class="baby-info-value" id="genderValue">A descobrir</p>
+        </div>
+
+        <div class="baby-info-card">
+          <span class="baby-info-icon">🗓️</span>
+          <p class="baby-info-label">Data prevista</p>
+          <p class="baby-info-value">
+            <!-- EDITE: Adicione a data de parto prevista -->
+            Em breve
+          </p>
+        </div>
+
+        <div class="baby-info-card">
+          <span class="baby-info-icon">❤️</span>
+          <p class="baby-info-label">Esperado com amor</p>
+          <p class="baby-info-value">Kassi &amp; Natan</p>
+        </div>
+
+        <div class="baby-info-card">
+          <span class="baby-info-icon">📍</span>
+          <p class="baby-info-label">Nascerá em</p>
+          <p class="baby-info-value">
+            <!-- EDITE: Cidade/País -->
+            A definir
+          </p>
+        </div>
+
+        <div class="baby-info-card">
+          <span class="baby-info-icon">⭐</span>
+          <p class="baby-info-label">Signo previsto</p>
+          <p class="baby-info-value">
+            <!-- EDITE: Signo -->
+            A descobrir
+          </p>
+        </div>
+
+      </div><!-- /baby-card-grid -->
+
+      <div class="divider-ornament" style="margin: var(--sp-xl) 0">✦ ✦ ✦</div>
+
+      <!-- ─── Carta para o Bebê ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">💌</span> Uma carta para você
+        </h2>
+        <div style="background:var(--color-bg-card); border:1px solid var(--color-border); border-radius:var(--radius-lg); padding:var(--sp-xl); box-shadow:0 4px 20px var(--color-shadow); transition: all var(--t-smooth);">
+          <p class="prose" style="font-style:italic; font-size:1rem; color:var(--color-text); line-height:2" data-field="bio">
+            <!--
+              EDITE: Escreva uma carta carinhosa para o bebê
+            -->
+            Querido(a) pequeno(a),<br/><br/>
+            Ainda não te conhecemos, mas já te amamos imensamente.
+            Cada dia que passa é um dia mais perto de te ver, de segurar
+            suas mãos, de escutar seu choro e seu riso.<br/><br/>
+            Este espaço é seu, e ele crescerá junto com você.<br/><br/>
+            Com todo o nosso amor,<br/>
+            <em>Kassi e Natan ♥</em>
+          </p>
+        </div>
+      </section>
+
+      <div class="divider-ornament" style="margin: var(--sp-xl) 0">✦ ✦ ✦</div>
+
+      <!-- ─── Galeria do Bebê ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">📷</span> Primeiros Momentos
+        </h2>
+        <p class="prose" style="margin-bottom:var(--sp-md)">
+          Fotos do ultrassom, da chegada e dos primeiros momentos serão
+          guardadas aqui com muito carinho.
+        </p>
+
+        <div class="profile-gallery-grid">
+          <!--
+            PARA ADICIONAR FOTOS:
+            <div class="profile-gallery-item" data-lightbox="fotos/ultrassom.jpg">
+              <img src="fotos/ultrassom.jpg" alt="Ultrassom" />
+            </div>
+          -->
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">🌟</span>Ultrassom</div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">🍼</span>Chegada</div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">🧸</span>Primeiros dias</div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">💛</span>Família reunida</div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">🎀</span>Enxoval</div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">🖼️</span>Adicionar foto</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── Contagem Regressiva de Aniversário ─── -->
+      <section class="section-block anim-fade-up" id="countdown-section">
+        <h2 class="section-title">
+          <span class="sec-icon">🎂</span> Próximo Aniversário
+        </h2>
+        <div class="countdown-wrapper">
+          <p class="countdown-intro">faltam para o aniversário</p>
+          <div class="countdown-grid">
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-days">--</span>
+              <span class="countdown-lbl">Dias</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-hours">--</span>
+              <span class="countdown-lbl">Horas</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-minutes">--</span>
+              <span class="countdown-lbl">Minutos</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-seconds">--</span>
+              <span class="countdown-lbl">Segundos</span>
+            </div>
+          </div>
+          <p class="countdown-footer-text">
+            para o próximo aniversário em <strong id="cd-next-date">21 de fevereiro</strong>
+          </p>
+        </div>
+      </section>
+
+    </div><!-- /baby-content -->
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Fechar">✕</button>
+      <img id="lightbox-img" src="" alt="Foto ampliada" />
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer class="page-footer">
+      <span class="footer-brand-text">Memórias de uma Família</span>
+      &copy; <span id="year"></span> -Todos os direitos reservados.
+    </footer>
+
+  </main>
+
+  <!-- ═══ ANIMAÇÃO DE ANIVERSÁRIO ═══════════════════════════════ -->
+  <div class="birthday-overlay" id="birthday-overlay" role="dialog" aria-modal="true" aria-label="Feliz Aniversário">
+    <div class="birthday-card">
+      <span class="birthday-big-heart">🎂</span>
+      <!-- EDITE: Altere a mensagem de aniversário abaixo -->
+      <p class="birthday-msg">Feliz aniversário, pequenininho(a)! 🎂</p>
+      <p class="birthday-sub">
+        Que este dia seja cheio de alegria, amor e muita magia.<br/>
+        Te amamos imensamente. ♥
+      </p>
+      <button class="birthday-close-btn" onclick="closeBirthdayAnimation()">Obrigado ♥</button>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/editor.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Aniversário do Bebê: 21 de fevereiro (data de teste)
+    document.addEventListener('DOMContentLoaded', () => initCountdown(21, 2));
+
+    // Atualiza mensagem de revelação e badge ao selecionar gênero
+    const origSelect = window.selectGender;
+    window.selectGender = function(gender) {
+      origSelect(gender);
+
+      const msg    = document.getElementById('revealMsg');
+      const badge  = document.getElementById('genderBadge');
+      const gvalue = document.getElementById('genderValue');
+
+      if (gender === 'girl') {
+        if (msg) msg.textContent = 'É uma Menina! 🎀';
+        if (gvalue) gvalue.textContent = 'Menina 🎀';
+      } else {
+        if (msg) msg.textContent = 'É um Menino! ⚓';
+        if (gvalue) gvalue.textContent = 'Menino ⚓';
+      }
+
+      if (badge) badge.style.display = 'inline-flex';
+    };
+
+    // Aplica estado salvo no carregamento
+    const saved = localStorage.getItem('familyTheme');
+    if (saved && saved !== 'default') {
+      window.selectGender(saved);
+    }
+  </script>
+</body>
+</html>

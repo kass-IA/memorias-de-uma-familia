@@ -1,0 +1,373 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natan -Memórias de uma Família</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌳</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+  <link rel="stylesheet" href="css/countdown.css" />
+  <link rel="stylesheet" href="css/birthday.css" />
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onerror="this.onerror=null;this.src='https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js'"></script>
+</head>
+<body data-page="pai">
+
+  <!-- ═══════════════════════════════════════
+       NAVEGAÇÃO
+  ═══════════════════════════════════════ -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      Memórias <span>de uma Família</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="familia.html">Família</a></li>
+      <li><a href="mae.html">Mãe</a></li>
+      <li><a href="pai.html" class="active">Pai</a></li>
+      <li><a href="bebe.html">Bebê</a></li>
+      <li><a href="pet.html">Pet</a></li>
+      <li><a href="galeria.html">Galeria</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       CONTEÚDO PRINCIPAL
+  ═══════════════════════════════════════ -->
+  <main class="page-wrapper">
+
+    <!-- HERO -->
+    <section class="profile-hero">
+      <a href="index.html" class="btn-back">← Voltar</a>
+
+      <!-- Foto principal -->
+      <div class="profile-photo-large anim-fade-up" data-photo-key="pai_profile">
+        <!--
+          PARA ADICIONAR FOTO:
+          Substitua pelo elemento abaixo:
+          <img src="fotos/pai-perfil.jpg" alt="Foto do Pai" />
+        -->
+        <img src="fotos/pai/natanael avore.jpg" alt="Foto do Pai" style="object-position: 40% 18%;" />
+      </div>
+
+      <h1 class="profile-name anim-fade-up delay-1" data-field="name">Natan</h1>
+      <p class="profile-tagline anim-fade-up delay-2" data-field="tagline">O pilar desta família</p>
+      <span class="ornament">✦ ✦ ✦</span>
+    </section>
+
+    <!-- CONTEÚDO -->
+    <div class="profile-content">
+
+      <!-- ─── Contagem Regressiva de Aniversário ─── -->
+      <section class="section-block anim-fade-up" id="countdown-section">
+        <h2 class="section-title">
+          <span class="sec-icon">🎂</span> Próximo Aniversário
+        </h2>
+        <div class="countdown-wrapper">
+          <p class="countdown-intro">faltam para o aniversário</p>
+          <div class="countdown-grid">
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-days">--</span>
+              <span class="countdown-lbl">Dias</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-hours">--</span>
+              <span class="countdown-lbl">Horas</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-minutes">--</span>
+              <span class="countdown-lbl">Minutos</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-seconds">--</span>
+              <span class="countdown-lbl">Segundos</span>
+            </div>
+          </div>
+          <p class="countdown-footer-text">
+            para o próximo aniversário em <strong id="cd-next-date">30 de agosto</strong>
+          </p>
+        </div>
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Foto de Infância ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">🧸</span> Infância
+        </h2>
+
+        <div class="childhood-gallery" id="childhood-gallery">
+          <div class="childhood-photo-wrap" data-photo-key="pai_childhood">
+            <img src="fotos/pai/baby natan.jpg" alt="Pai na infância" />
+            <p class="childhood-ph-text">Foto da infância<br/>será adicionada aqui</p>
+          </div>
+          <!-- Fotos extras de infância carregadas do banco -->
+        </div>
+
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Formação / Graduação ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">🎓</span> Formação &amp; Graduação
+        </h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="timeline-year">Graduação</p>
+            <p class="timeline-title">Análise e Desenvolvimento de Sistemas </p>
+            <p class="timeline-desc">Formado em Análise e Desenvolvimento de Sistemas, Desenvolvendo soluções web, estruturação de banco de dados e construção de aplicações completas do back-end.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year">Pós-graduação / Especialização</p>
+            <p class="timeline-title">Segurança da informação</p>
+            <p class="timeline-desc">Proteção de dados, sistemas, redes e informações contra ataques, invasões e vazamentos</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Conquistas & Trajetória ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">⭐</span> Conquistas &amp; Trajetória
+        </h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="timeline-year"><!-- EDITE: Ano --></p>
+            <p class="timeline-title"><!-- EDITE: Conquista 1 --> Minha moto 🏍️</p>
+            <p class="timeline-desc"><!-- EDITE --> Conquistar minha moto foi mais do que comprar um veículo. Foi a prova de que eu sou capaz de alcançar o que eu sonho. Passei por ansiedade, noites mal dormidas e momentos de tristeza pela demora, mas não desisti. Quando consegui, senti orgulho de mim mesmo. Foi minha primeira grande realização.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year"><!-- EDITE: Ano --></p>
+            <p class="timeline-title"><!-- EDITE: Conquista 2 --> Minha esposa e mãe dos meus filhos 🤍</p>
+            <p class="timeline-desc"><!-- EDITE --> Nós nos conhecemos no meu primeiro emprego, e desde então minha vida mudou.
+Ter ela ao meu lado é uma das maiores conquistas da minha vida. Construímos nossa relação com amor, respeito e companheirismo.
+Estar com ela é a melhor sensação que existe. Ela é minha parceira, meu apoio e minha vida.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year"><!-- EDITE: Ano --></p>
+            <p class="timeline-title"><!-- EDITE --> Formação da nossa família</p>
+            <p class="timeline-desc"><!-- EDITE --> A conquista mais especial de todas.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Cor Favorita ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">🎨</span> Cor Favorita
+        </h2>
+        <div class="info-card" style="max-width:300px">
+          <!--
+            EDITE: Altere o background do span com a cor favorita
+          -->
+          <span class="color-swatch" style="background:#032775" title="Cor favorita"></span>
+          <div class="info-card-text">
+            <p class="info-card-label">Cor favorita</p>
+            <p class="info-card-value">Azul escuro</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Preferências & Gostos ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">💙</span> Preferências &amp; Gostos
+        </h2>
+
+        <div class="info-grid">
+
+          <div class="info-card">
+            <span class="info-card-icon">🌲</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Perfume favorito</p>
+              <p class="info-card-value">Coraggio, Natural Homem Essence</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">📺</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Série favorita</p>
+              <p class="info-card-value">Supernatural, The big bang theory</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">🎬</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Filme favorito</p>
+              <p class="info-card-value">Viva a vida é uma festa</p>
+            </div>
+          </div>
+
+<div class="info-card">
+            <span class="info-card-icon">✨</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Animes favoritos</p>
+              <p class="info-card-value">Dragon ball, Shingeki no Kyojin, Death Note, Yu yu hakusho, Super onze, One piece, Pokémon </p>
+            </div>
+          </div>
+
+
+          <div class="info-card">
+            <span class="info-card-icon">🎵</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Música favorita</p>
+              <p class="info-card-value">carry on wayward son</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">🍽️</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Comida favorita</p>
+              <p class="info-card-value">filé de peixe</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">🐾</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Animal favorito</p>
+              <p class="info-card-value">Gato</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">⚽</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Hobby</p>
+              <p class="info-card-value">jogar</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">🧠</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Tipo de personalidade</p>
+              <p class="info-card-value">INTJ</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">♍</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Signo</p>
+              <p class="info-card-value">Virgem</p>
+            </div>
+          </div>
+
+        </div><!-- /info-grid -->
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Galeria Pessoal ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">📷</span> Galeria Pessoal
+        </h2>
+        <p class="prose" style="margin-bottom:var(--sp-md)">
+          Momentos especiais serão adicionados aqui conforme a família cresce.
+          
+        </p>
+
+        <div class="profile-gallery-grid">
+          <!--
+            PARA ADICIONAR FOTOS:
+            <div class="profile-gallery-item" data-lightbox="fotos/pai-1.jpg">
+              <img src="fotos/pai-1.jpg" alt="Descrição" />
+            </div>
+          -->
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">🖼️</span>Adicionar foto</div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">🖼️</span>Adicionar foto</div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">🖼️</span>Adicionar foto</div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">🖼️</span>Adicionar foto</div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">🖼️</span>Adicionar foto</div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">🖼️</span>Adicionar foto</div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /profile-content -->
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Fechar">✕</button>
+      <img id="lightbox-img" src="" alt="Foto ampliada" />
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer class="page-footer">
+      <span class="footer-brand-text">Memórias de uma Família</span>
+      &copy; <span id="year"></span> -Todos os direitos reservados.
+    </footer>
+
+  </main>
+
+  <!-- ═══ ANIMAÇÃO DE ANIVERSÁRIO ═══════════════════════════════ -->
+  <div class="birthday-overlay" id="birthday-overlay" role="dialog" aria-modal="true" aria-label="Feliz Aniversário">
+    <div class="birthday-card">
+      <span class="birthday-big-heart">❤️</span>
+      <!-- EDITE: Altere a mensagem de aniversário abaixo -->
+      <p class="birthday-msg">Feliz aniversário, meu amor ❤️</p>
+      <p class="birthday-sub">
+        Que este dia seja tão especial e luminoso<br/>quanto você é para esta família. Com todo o amor. ♥
+      </p>
+      <button class="birthday-close-btn" onclick="closeBirthdayAnimation()">Obrigado ♥</button>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/editor.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Aniversário do Pai: 30 de agosto
+    document.addEventListener('DOMContentLoaded', () => initCountdown(30, 8));
+  </script>
+</body>
+</html>

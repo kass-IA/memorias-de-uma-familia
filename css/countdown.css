@@ -1,0 +1,86 @@
+/* ============================================================
+   MEMÓRIAS DE UMA FAMÍLIA — countdown.css
+   Contagem regressiva de aniversário
+   ============================================================ */
+
+.countdown-wrapper {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-lg) var(--sp-xl);
+  text-align: center;
+  box-shadow: 0 4px 24px var(--color-shadow);
+  max-width: 480px;
+  margin: 0 auto;
+  transition: background var(--t-smooth), border-color var(--t-smooth), box-shadow var(--t-smooth);
+}
+
+.countdown-intro {
+  font-size: 0.74rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-md);
+  font-weight: 300;
+}
+
+.countdown-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-sm);
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 52px;
+}
+
+.countdown-num {
+  font-family: var(--font-heading);
+  font-size: 2.9rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--color-accent);
+  line-height: 1;
+  min-width: 2.2ch;
+  text-align: center;
+  transition: color var(--t-smooth);
+}
+
+.countdown-lbl {
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-text-muted);
+}
+
+.countdown-sep {
+  font-size: 2rem;
+  color: var(--color-accent);
+  opacity: 0.32;
+  line-height: 1;
+  margin-bottom: 22px; /* alinha com o número */
+  transition: color var(--t-smooth);
+}
+
+.countdown-footer-text {
+  margin-top: var(--sp-md);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.countdown-footer-text strong {
+  color: var(--color-accent);
+  font-style: normal;
+  transition: color var(--t-smooth);
+}
+
+@media (max-width: 480px) {
+  .countdown-wrapper { padding: var(--sp-md); }
+  .countdown-num { font-size: 2.2rem; }
+}

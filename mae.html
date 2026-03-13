@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kassi -Memórias de uma Família</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌳</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+  <link rel="stylesheet" href="css/countdown.css" />
+  <link rel="stylesheet" href="css/birthday.css" />
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onerror="this.onerror=null;this.src='https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js'"></script>
+</head>
+<body data-page="mae">
+
+  <!-- ═══════════════════════════════════════
+       NAVEGAÇÃO
+  ═══════════════════════════════════════ -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      Memórias <span>de uma Família</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="familia.html">Família</a></li>
+      <li><a href="mae.html" class="active">Mãe</a></li>
+      <li><a href="pai.html">Pai</a></li>
+      <li><a href="bebe.html">Bebê</a></li>
+      <li><a href="pet.html">Pet</a></li>
+      <li><a href="galeria.html">Galeria</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       CONTEÚDO PRINCIPAL
+  ═══════════════════════════════════════ -->
+  <main class="page-wrapper">
+
+    <!-- HERO -->
+    <section class="profile-hero">
+      <a href="index.html" class="btn-back">← Voltar</a>
+
+      <!-- Foto principal -->
+      <div class="profile-photo-large anim-fade-up" data-photo-key="mae_profile">
+        <!--
+          PARA ADICIONAR FOTO:
+          Substitua pelo elemento abaixo:
+          <img src="fotos/mae-perfil.jpg" alt="Foto da Mãe" />
+        -->
+        <img src="fotos/mae/kassi arvore.jpg" alt="Foto da Mãe" style="object-position: center 28%;" />
+      </div>
+
+      <h1 class="profile-name anim-fade-up delay-1" data-field="name">Kassi</h1>
+      <p class="profile-tagline anim-fade-up delay-2" data-field="tagline">A alma desta família</p>
+      <span class="ornament">✦ ✦ ✦</span>
+    </section>
+
+    <!-- CONTEÚDO -->
+    <div class="profile-content">
+
+      <!-- ─── Contagem Regressiva de Aniversário ─── -->
+      <section class="section-block anim-fade-up" id="countdown-section">
+        <h2 class="section-title">
+          <span class="sec-icon">🎂</span> Próximo Aniversário
+        </h2>
+        <div class="countdown-wrapper">
+          <p class="countdown-intro">faltam para o aniversário</p>
+          <div class="countdown-grid">
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-days">--</span>
+              <span class="countdown-lbl">Dias</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-hours">--</span>
+              <span class="countdown-lbl">Horas</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-minutes">--</span>
+              <span class="countdown-lbl">Minutos</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-seconds">--</span>
+              <span class="countdown-lbl">Segundos</span>
+            </div>
+          </div>
+          <p class="countdown-footer-text">
+            para o próximo aniversário em <strong id="cd-next-date">3 de dezembro</strong>
+          </p>
+        </div>
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Foto de Infância ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">🧸</span> Infância
+        </h2>
+
+        <div class="childhood-gallery" id="childhood-gallery">
+          <div class="childhood-photo-wrap" data-photo-key="mae_childhood">
+            <img src="fotos/mae/baby kassi.jpg" alt="Mãe na infância" />
+            <p class="childhood-ph-text">Foto da infância<br/>será adicionada aqui</p>
+          </div>
+          <!-- Fotos extras de infância carregadas do banco -->
+        </div>
+
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Formação / Graduação ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">🎓</span> Formação &amp; Graduação
+        </h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="timeline-year">Graduação</p>
+            <p class="timeline-title">Análise e Desenvolvimento de Sistemas</p>
+            <p class="timeline-desc">Formada em Análise e Desenvolvimento de Sistemas e atuando como Desenvolvedora Full Stack. Experiência no desenvolvimento de soluções web, estruturação de banco de dados e construção de aplicações completas, do front-end ao back-end.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year">Pós-graduação / Especialização</p>
+            <p class="timeline-title"><!-- EDITE --> Engenharia de Software</p>
+            <p class="timeline-desc"><!-- EDITE --> Aprofundando conhecimentos em arquitetura de sistemas, boas práticas de desenvolvimento, qualidade de software, metodologias ágeis e escalabilidade de aplicações.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Conquistas & Trajetória ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">⭐</span> Conquistas &amp; Trajetória
+        </h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="timeline-year"><!-- EDITE: Ano --></p>
+            <p class="timeline-title"><!-- EDITE: Conquista 1 --> Independência e Patrimônio</p>
+            <p class="timeline-desc"><!-- EDITE --> A realização de adquirir meus próprios imóveis e construir patrimônio em meu nome representa minha disciplina, visão de futuro e independência. Mais do que bens materiais, simboliza estabilidade, responsabilidade e a concretização dos meus objetivos e sonhos se realizando</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year"><!-- EDITE: Ano --></p>
+            <p class="timeline-title"><!-- EDITE: Conquista 2 --> Formação e Carreira na Tecnologia</p>
+            <p class="timeline-desc"><!-- EDITE --> Uma conquista construída com muita dedicação, estudo contínuo e força de vontade.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year"><!-- EDITE: Ano --></p>
+            <p class="timeline-title"><!-- EDITE: Conquista 3 --> Formação da nossa família</p>
+            <p class="timeline-desc"><!-- EDITE --> A conquista mais especial de todas.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Cor Favorita ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">🎨</span> Cor Favorita
+        </h2>
+        <div class="info-card" style="max-width:300px">
+          <!--
+            EDITE: Altere o background do span com a cor favorita
+            Exemplo: style="background:#c9a0b0"
+          -->
+          <span class="color-swatch" style="background:#f1a8c4" title="Cor favorita"></span>
+          <div class="info-card-text">
+            <p class="info-card-label">Cor favorita</p>
+            <p class="info-card-value">Rosa baby</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Preferências & Gostos ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">💝</span> Preferências &amp; Gostos
+        </h2>
+
+        <div class="info-grid">
+
+          <div class="info-card">
+            <span class="info-card-icon">🌹</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Perfume favorito</p>
+              <p class="info-card-value">Miss Dior Eau parfum, Rabanne Million Gold, Lattafa Yara elixir,
+                Egeo Dolce</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">📺</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Série favorita</p>
+              <p class="info-card-value"> The Big Bang Theory, Bridgerton, La casa de papel, Squid Game, You</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">🎬</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Filme favorito</p>
+              <p class="info-card-value">Cruella, CAM, Mean girls, Bonequinha de luxo, diabo veste prada, Como eu era antes de você</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">✨</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Animes favoritos</p>
+              <p class="info-card-value">Shingeki no Kyojin, The Promised Neverland, Death Note, Naruto </p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">🎵</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Música favorita</p>
+              <p class="info-card-value">the neighbourhood a little death, Skyfall</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">🍽️</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Comida favorita</p>
+              <p class="info-card-value">Camarão</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">🐾</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Animal favorito</p>
+              <p class="info-card-value">Gatos, lagartixas, coelhos, pássaros, capivara</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">🌿</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Hobby</p>
+              <p class="info-card-value">dormir, skincare, makeup, comprar, assistir séries</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">🧠</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Tipo de personalidade</p>
+              <p class="info-card-value">ENTJ</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">♐</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Signo</p>
+              <p class="info-card-value">Sagitário</p>
+            </div>
+          </div>
+
+        </div><!-- /info-grid -->
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Galeria Pessoal ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">📷</span> Galeria Pessoal
+        </h2>
+        <p class="prose" style="margin-bottom:var(--sp-md)">
+          Momentos especiais serão adicionados aqui conforme a família cresce.
+        </p>
+
+        <div class="profile-gallery-grid">
+          <!--
+            PARA ADICIONAR FOTOS:
+            Substitua o div inteiro por:
+            <div class="profile-gallery-item" data-lightbox="fotos/mae-1.jpg">
+              <img src="fotos/mae-1.jpg" alt="Descrição" />
+            </div>
+          -->
+          <div class="profile-gallery-item">
+            <div class="gallery-ph">
+              <span class="gallery-ph-icon">🖼️</span>Adicionar foto
+            </div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph">
+              <span class="gallery-ph-icon">🖼️</span>Adicionar foto
+            </div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph">
+              <span class="gallery-ph-icon">🖼️</span>Adicionar foto
+            </div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph">
+              <span class="gallery-ph-icon">🖼️</span>Adicionar foto
+            </div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph">
+              <span class="gallery-ph-icon">🖼️</span>Adicionar foto
+            </div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph">
+              <span class="gallery-ph-icon">🖼️</span>Adicionar foto
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /profile-content -->
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Fechar">✕</button>
+      <img id="lightbox-img" src="" alt="Foto ampliada" />
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer class="page-footer">
+      <span class="footer-brand-text">Memórias de uma Família</span>
+      &copy; <span id="year"></span> -Todos os direitos reservados.
+    </footer>
+
+  </main>
+
+  <!-- ═══ ANIMAÇÃO DE ANIVERSÁRIO ═══════════════════════════════ -->
+  <div class="birthday-overlay" id="birthday-overlay" role="dialog" aria-modal="true" aria-label="Feliz Aniversário">
+    <div class="birthday-card">
+      <span class="birthday-big-heart">❤️</span>
+      <!-- EDITE: Altere a mensagem de aniversário abaixo -->
+      <p class="birthday-msg">Feliz aniversário, meu amor ❤️</p>
+      <p class="birthday-sub">
+        Que este dia seja tão especial e luminoso<br/>quanto você é para esta família. Com todo o amor. ♥
+      </p>
+      <button class="birthday-close-btn" onclick="closeBirthdayAnimation()">Obrigado ♥</button>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/editor.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Aniversário da Mãe: 3 de dezembro
+    document.addEventListener('DOMContentLoaded', () => initCountdown(3, 12));
+  </script>
+</body>
+</html>

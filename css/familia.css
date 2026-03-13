@@ -1,0 +1,424 @@
+/* ============================================================
+   MEMÓRIAS DE UMA FAMÍLIA — familia.css
+   Página da família
+   ============================================================ */
+
+/* ─── Hero da família ───────────────────────────────────────── */
+.family-hero {
+  text-align: center;
+  padding: var(--sp-xl) var(--sp-md) var(--sp-lg);
+  background: linear-gradient(180deg, var(--color-accent-ultra) 0%, var(--color-bg) 100%);
+  transition: background var(--t-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.family-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, var(--color-border) 1px, transparent 0);
+  background-size: 24px 24px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.family-hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-style: italic;
+  color: var(--color-accent);
+  margin-bottom: var(--sp-sm);
+  transition: color var(--t-smooth);
+}
+
+/* ─── Conteúdo ──────────────────────────────────────────────── */
+.family-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--sp-lg) var(--sp-md) var(--sp-2xl);
+}
+
+/* ─── Citação / frase especial ──────────────────────────────── */
+.family-quote {
+  max-width: 600px;
+  margin: var(--sp-lg) auto;
+  text-align: center;
+  padding: var(--sp-lg);
+  border-left: 3px solid var(--color-accent);
+  border-right: 3px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-ultra);
+  transition: all var(--t-smooth);
+}
+
+.family-quote p {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+.family-quote cite {
+  display: block;
+  margin-top: var(--sp-sm);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+  font-style: normal;
+}
+
+/* ─── Mini-árvore ───────────────────────────────────────────── */
+.mini-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--sp-lg) 0;
+}
+
+.mini-tree .member-card {
+  padding: 0 var(--sp-sm);
+}
+
+.mini-tree .photo-circle {
+  width: 50px;
+  height: 50px;
+}
+
+.mini-tree .conn-line {
+  width: 30px;
+}
+
+/* Wrapper da mini-árvore */
+.mini-tree-wrapper {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-lg);
+  box-shadow: 0 4px 20px var(--color-shadow);
+  text-align: center;
+  margin-bottom: var(--sp-lg);
+  transition: all var(--t-smooth);
+}
+
+.mini-tree-wrapper h3 {
+  font-family: var(--font-heading);
+  font-style: italic;
+  color: var(--color-accent);
+  font-size: 1.15rem;
+  margin-bottom: var(--sp-md);
+  transition: color var(--t-smooth);
+}
+
+/* ─── Botão primário ────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 28px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-accent);
+  background: var(--color-accent-ultra);
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  transition: all var(--t-fast);
+  font-family: var(--font-body);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent);
+  color: white;
+  box-shadow: 0 6px 20px var(--color-shadow);
+}
+
+/* ─── Estatísticas da família ───────────────────────────────── */
+.stats-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-lg);
+  margin: var(--sp-lg) 0;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-style: italic;
+  color: var(--color-accent);
+  display: block;
+  line-height: 1;
+  transition: color var(--t-smooth);
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+/* ─── Linha do tempo da família ─────────────────────────────── */
+.family-timeline-compact {
+  position: relative;
+  padding-left: var(--sp-lg);
+  max-width: 620px;
+}
+
+.family-timeline-compact::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 1.5px;
+  background: linear-gradient(to bottom, var(--color-accent), transparent);
+}
+
+/* ─── Grid de valores ───────────────────────────────────────── */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--sp-md);
+}
+
+.value-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-lg);
+  text-align: center;
+  box-shadow: 0 4px 16px var(--color-shadow);
+  transition: all var(--t-fast), background var(--t-smooth), border-color var(--t-smooth);
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px var(--color-shadow);
+}
+
+.value-icon {
+  font-size: 2.6rem;
+  display: block;
+  margin-bottom: var(--sp-sm);
+}
+
+.value-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--color-accent);
+  margin-bottom: var(--sp-xs);
+  transition: color var(--t-smooth);
+}
+
+.value-desc {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* ─── Galeria de momentos na página família ─────────────────── */
+/* Usa os mesmos seletores do ProfileGalleryModule para suporte a upload */
+.profile-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--sp-sm);
+}
+
+.profile-gallery-item {
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-ultra);
+  border: 2px dashed var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+
+.profile-gallery-item:hover {
+  border-color: var(--color-accent);
+  transform: scale(1.04);
+  box-shadow: 0 8px 24px var(--color-shadow);
+}
+
+.profile-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-ph {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-style: italic;
+  padding: var(--sp-md);
+}
+
+.gallery-ph-icon {
+  font-size: 1.8rem;
+  opacity: 0.35;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ─── Grid de membros da família ────────────────────────────── */
+.family-members-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-xl);
+}
+
+.family-member-mini {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-sm);
+  cursor: pointer;
+  transition: transform var(--t-fast);
+}
+
+.family-member-mini:hover {
+  transform: translateY(-4px);
+}
+
+.family-member-mini .photo-circle {
+  width: 100px;
+  height: 100px;
+}
+
+/* ─── Componentes compartilhados usados nesta página ────────── */
+.photo-circle {
+  border-radius: var(--radius-full);
+  border: 3px solid var(--color-accent-light);
+  box-shadow: 0 8px 30px var(--color-shadow);
+  overflow: hidden;
+  background: var(--color-accent-ultra);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color var(--t-smooth),
+    box-shadow var(--t-smooth),
+    background var(--t-smooth);
+  position: relative;
+}
+
+.ph-icon {
+  font-size: 2.4rem;
+  opacity: 0.45;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.ph-label {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  letter-spacing: 0.05em;
+  text-align: center;
+  padding: 0 6px;
+}
+
+.member-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--color-text);
+  text-align: center;
+  transition: color var(--t-smooth);
+}
+
+.member-role {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* Conector entre pais na mini-árvore */
+.couple-connector {
+  display: flex;
+  align-items: center;
+  padding-top: 52px;
+  gap: 0;
+}
+
+.conn-line {
+  width: 48px;
+  height: 2px;
+  background: var(--color-line);
+  transition: background var(--t-smooth);
+}
+
+.conn-heart {
+  font-size: 1.3rem;
+  color: var(--color-heart);
+  transition: color var(--t-smooth);
+  animation: heartbeat 2.2s ease-in-out infinite;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.18); }
+}
+
+.tree-v-line {
+  width: 2px;
+  height: 72px;
+  background: var(--color-line);
+  transition: background var(--t-smooth);
+}
+
+.generation-parents {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+}
+
+.generation-children {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Seção titles */
+.section-block {
+  margin-bottom: var(--sp-xl);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-style: italic;
+  color: var(--color-accent);
+  margin-bottom: var(--sp-md);
+  padding-bottom: var(--sp-sm);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  transition: color var(--t-smooth), border-color var(--t-smooth);
+}
+
+.section-title .sec-icon {
+  font-size: 1.2rem;
+  opacity: 0.7;
+}

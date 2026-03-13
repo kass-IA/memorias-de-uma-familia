@@ -1,0 +1,387 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pets -Memórias de uma Família</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌳</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+  <link rel="stylesheet" href="css/pet.css" />
+  <link rel="stylesheet" href="css/countdown.css" />
+  <link rel="stylesheet" href="css/birthday.css" />
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onerror="this.onerror=null;this.src='https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js'"></script>
+</head>
+<body data-page="pet">
+
+  <!-- ═══════════════════════════════════════
+       NAVEGAÇÃO
+  ═══════════════════════════════════════ -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      Memórias <span>de uma Família</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="familia.html">Família</a></li>
+      <li><a href="mae.html">Mãe</a></li>
+      <li><a href="pai.html">Pai</a></li>
+      <li><a href="bebe.html">Bebê</a></li>
+      <li><a href="pet.html" class="active">Pet</a></li>
+      <li><a href="galeria.html">Galeria</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       CONTEÚDO PRINCIPAL
+  ═══════════════════════════════════════ -->
+  <main class="page-wrapper">
+
+    <!-- HERO -->
+    <section class="profile-hero">
+      <a href="index.html" class="btn-back">← Voltar</a>
+
+      <div class="profile-photo-large anim-fade-up" data-photo-key="pet_profile">
+        <img src="fotos/pet/xodo.jpg" alt="Xodó" />
+      </div>
+
+      <h1 class="profile-name anim-fade-up delay-1" data-field="name">Xodó</h1>
+      <p class="profile-tagline anim-fade-up delay-2" data-field="tagline">O amor peludo desta família</p>
+      <span class="ornament">🐾 🐾 🐾</span>
+    </section>
+
+    <!-- CONTEÚDO -->
+    <div class="profile-content">
+
+      <!-- ─── Contagem Regressiva de Aniversário ─── -->
+      <section class="section-block anim-fade-up" id="countdown-section">
+        <h2 class="section-title">
+          <span class="sec-icon">🎂</span> Próximo Aniversário
+        </h2>
+        <div class="countdown-wrapper">
+          <p class="countdown-intro">faltam para o aniversário do Xodó</p>
+          <div class="countdown-grid">
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-days">--</span>
+              <span class="countdown-lbl">Dias</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-hours">--</span>
+              <span class="countdown-lbl">Horas</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-minutes">--</span>
+              <span class="countdown-lbl">Minutos</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="cd-seconds">--</span>
+              <span class="countdown-lbl">Segundos</span>
+            </div>
+          </div>
+          <p class="countdown-footer-text">
+            para o próximo aniversário em <strong id="cd-next-date">7 de agosto</strong>
+          </p>
+        </div>
+      </section>
+
+      <div class="divider-ornament">🐾 🐾 🐾</div>
+
+      <!-- ─── Sobre o Xodó ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">🐱</span> Sobre o Xodó
+        </h2>
+
+        <div class="info-grid">
+
+          <div class="info-card">
+            <span class="info-card-icon">📅</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Nascimento</p>
+              <p class="info-card-value">7 de agosto</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">🎂</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Idade</p>
+              <p class="info-card-value">7 aninhos</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">🧡</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Pelagem</p>
+              <p class="info-card-value">Laranja</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">🐾</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Espécie</p>
+              <p class="info-card-value">Gato doméstico</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-card-icon">🏷️</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Apelido</p>
+              <p class="info-card-value">Imenso</p>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="prose" style="margin-top:var(--sp-md)" data-field="bio">
+          O Xodó chegou para completar esta família com ronronados, patinhas e muito amor.
+          Laranjinha de coração grande, ele sabe como fazer qualquer dia mais feliz.
+        </p>
+      </section>
+
+      <div class="divider-ornament">🐾 🐾 🐾</div>
+
+      <!-- ─── Alimentação Favorita ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">🍽️</span> Alimentação Favorita
+        </h2>
+
+        <div class="info-grid">
+
+          <div class="info-card pref-card-highlight">
+            <span class="info-card-icon">🍗</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Prato favorito</p>
+              <p class="info-card-value">Franguinho</p>
+            </div>
+          </div>
+
+          <div class="info-card pref-card-highlight">
+            <span class="info-card-icon">🥭</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Bebida favorita</p>
+              <p class="info-card-value">Suco de manga</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="divider-ornament">🐾 🐾 🐾</div>
+
+      <!-- ─── Lugares Favoritos para Dormir ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">😴</span> Lugares Favoritos para Dormir
+        </h2>
+
+        <div class="info-grid">
+
+          <div class="info-card pref-card-highlight">
+            <span class="info-card-icon">🧊</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Spot favorito nº 1</p>
+              <p class="info-card-value">Em frente à geladeira</p>
+            </div>
+          </div>
+
+          <div class="info-card pref-card-highlight">
+            <span class="info-card-icon">🛏️</span>
+            <div class="info-card-text">
+              <p class="info-card-label">Spot favorito nº 2</p>
+              <p class="info-card-value">Na ponta da cama</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="divider-ornament">🐾 🐾 🐾</div>
+
+      <!-- ─── Galeria do Xodó ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">📷</span> Galeria do Xodó
+        </h2>
+        <p class="prose" style="margin-bottom:var(--sp-md)">
+          As fotos mais fofas do laranjinha serão guardadas aqui.
+          Substitua os placeholders pelas fotos do Xodó.
+        </p>
+
+        <div class="profile-gallery-grid">
+          <!--
+            PARA ADICIONAR MAIS FOTOS DO XODO:
+            <div class="profile-gallery-item" data-lightbox="fotos/pet/nova-foto.jpg">
+              <img src="fotos/pet/nova-foto.jpg" alt="Xodó" />
+            </div>
+          -->
+          <div class="profile-gallery-item" data-lightbox="fotos/pet/xodo01.jpg">
+            <img src="fotos/pet/xodo01.jpg" alt="Xodó" />
+          </div>
+          <div class="profile-gallery-item" data-lightbox="fotos/pet/xodo.jpg">
+            <img src="fotos/pet/xodo.jpg" alt="Xodó" />
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">😴</span>Adicionar foto</div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">🧡</span>Adicionar foto</div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">🍗</span>Adicionar foto</div>
+          </div>
+          <div class="profile-gallery-item">
+            <div class="gallery-ph"><span class="gallery-ph-icon">🐱</span>Adicionar foto</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-ornament">🐾 🐾 🐾</div>
+
+      <!-- ─── Família de Pets ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">🐾</span> Nossa Família de Pets
+        </h2>
+        <p class="prose" style="margin-bottom:var(--sp-lg)">
+          Os peludinhos que fazem parte desta história.
+          Esta seção cresce junto com a família -adicione novos pets aqui.
+        </p>
+
+        <div class="pets-family-grid">
+
+          <!-- ── Xodó (pet atual) ── -->
+          <div class="pet-member-card" data-pet-color="orange">
+            <div class="photo-circle">
+              <img src="fotos/pet/xodo01.jpg" alt="Xodó" />
+            </div>
+            <p class="member-name">Xodó</p>
+            <p class="member-role">Gatinho laranja</p>
+            <p style="font-size:0.75rem; color:var(--color-text-muted); margin-top:4px">7 anos · 7 de agosto</p>
+          </div>
+
+          <!-- ── Placeholder: futuro pet ── -->
+          <!--
+            PARA ADICIONAR UM NOVO PET:
+            Copie o bloco acima (.pet-member-card) e preencha com os dados do novo pet.
+            Remova ou substitua este card de placeholder.
+          -->
+          <div class="pet-member-card pet-add-card">
+            <div class="photo-circle">
+              <span class="ph-icon" style="font-size:2rem; opacity:0.3">+</span>
+            </div>
+            <p class="member-name" style="opacity:0.5">Próximo pet</p>
+            <p class="pet-add-label">Aguardando com muito amor ♥</p>
+          </div>
+
+          <!-- ── Adicione novos pets aqui ── -->
+
+        </div>
+      </section>
+
+    </div><!-- /profile-content -->
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Fechar">✕</button>
+      <img id="lightbox-img" src="" alt="Foto ampliada" />
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer class="page-footer">
+      <span class="footer-brand-text">Memórias de uma Família</span>
+      &copy; <span id="year"></span> -Todos os direitos reservados.
+    </footer>
+
+  </main>
+
+  <!-- Patinha decorativa de fundo -->
+  <div class="pet-bg-paw" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="currentColor">
+      <!-- Almofada central -->
+      <ellipse cx="60" cy="78" rx="28" ry="22"/>
+      <!-- Dedinho superior esquerdo -->
+      <ellipse cx="28" cy="46" rx="10" ry="13" transform="rotate(-20 28 46)"/>
+      <!-- Dedinho superior centro-esquerdo -->
+      <ellipse cx="48" cy="34" rx="10" ry="13" transform="rotate(-5 48 34)"/>
+      <!-- Dedinho superior centro-direito -->
+      <ellipse cx="70" cy="34" rx="10" ry="13" transform="rotate(5 70 34)"/>
+      <!-- Dedinho superior direito -->
+      <ellipse cx="90" cy="46" rx="10" ry="13" transform="rotate(20 90 46)"/>
+    </svg>
+  </div>
+
+  <!-- ═══ ANIMAÇÃO DE ANIVERSÁRIO ═══════════════════════════════ -->
+  <div class="birthday-overlay" id="birthday-overlay" role="dialog" aria-modal="true" aria-label="Feliz Aniversário Xodó">
+    <div class="birthday-card">
+      <span class="birthday-big-heart">🐱</span>
+      <p class="birthday-msg">Feliz aniversário, Xodó! 🐾❤️</p>
+      <p class="birthday-sub">
+        Mais um aninho cheio de franguinho, suco de manga<br/>
+        e muito amor desta família. Te amamos, laranjinha! 🧡
+      </p>
+      <button class="birthday-close-btn" onclick="closeBirthdayAnimation()">Com amor ♥</button>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/editor.js"></script>
+  <script>
+    // Garante o tema laranja nesta página, independente do tema de gênero salvo
+    window.initTheme = function() {
+      document.documentElement.setAttribute('data-theme', 'pet');
+    };
+
+    // Troca o tema da página de acordo com a cor do pet clicado
+    window.applyPetColorTheme = function(color) {
+      const themeMap = {
+        green:  'pet-green',
+        blue:   'pet-blue',
+        pink:   'pet-pink',
+        red:    'pet-red',
+        yellow: 'pet-yellow',
+        gray:   'pet-gray',
+        purple: 'pet-purple',
+        orange: 'pet'
+      };
+      document.documentElement.setAttribute('data-theme', themeMap[color] || 'pet');
+    };
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Aniversário do Xodó: 7 de agosto
+    document.addEventListener('DOMContentLoaded', () => {
+      initCountdown(7, 8);
+      // Clique nos cards estáticos (com data-pet-color) troca o tema
+      document.querySelectorAll('.pet-member-card[data-pet-color]').forEach(card => {
+        card.addEventListener('click', () => applyPetColorTheme(card.dataset.petColor));
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Conteúdo do site ─────────────────────────────────────────
+    // Leitura pública; escrita apenas para membros da família.
+    match /content/{page} {
+      allow read: if true;
+      allow write: if isFamily();
+    }
+
+    // ── Usuários ─────────────────────────────────────────────────
+    // Cada usuário lê apenas o próprio documento.
+    // Escrita: apenas administradores via Console Firebase.
+    match /users/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false; // Gerencie via Console do Firebase
+    }
+
+    // ── Função auxiliar: verifica role "family" ──────────────────
+    function isFamily() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'family';
+    }
+  }
+}

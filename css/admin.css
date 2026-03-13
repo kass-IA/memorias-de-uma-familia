@@ -1,0 +1,825 @@
+/* ============================================================
+   MEMÓRIAS DE UMA FAMÍLIA — admin.css
+   Sistema administrativo (painel de edição)
+   ============================================================ */
+
+/* Botão de cadeado (pré-login) */
+#adm-lock-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1100;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg-card);
+  box-shadow: 0 4px 20px var(--color-shadow);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--t-fast);
+  opacity: 0.55;
+}
+#adm-lock-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  box-shadow: 0 8px 28px var(--color-shadow);
+}
+
+/* Barra administrativa (pós-login) */
+#adm-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1200;
+  height: 42px;
+  background: var(--color-accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: 0 var(--sp-md);
+  font-size: 0.78rem;
+  font-family: var(--font-body);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.adm-bar-icon { font-size: 1rem; }
+.adm-bar-label { font-weight: 600; letter-spacing: 0.04em; }
+.adm-bar-email {
+  flex: 1;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.72rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: var(--sp-xs);
+}
+.adm-bar-logout {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  border-radius: var(--radius-full);
+  padding: 4px 14px;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: background var(--t-fast);
+  font-family: var(--font-body);
+}
+.adm-bar-logout:hover { background: rgba(255,255,255,0.35); }
+
+/* Modal base (login + galeria) */
+#admin-login-modal,
+#adm-gallery-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  align-items: center;
+  justify-content: center;
+}
+#admin-login-modal.adm-visible,
+#adm-gallery-modal.adm-visible {
+  display: flex;
+}
+
+.adm-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(3px);
+}
+
+.adm-box {
+  position: relative;
+  z-index: 1;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-xl) var(--sp-lg);
+  width: min(420px, 90vw);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  animation: adm-box-in 0.25s ease;
+}
+@keyframes adm-box-in {
+  from { opacity: 0; transform: translateY(-16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.adm-box-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--color-accent);
+  text-align: center;
+  margin-bottom: 2px;
+}
+.adm-box-sub {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-bottom: var(--sp-sm);
+}
+
+.adm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.adm-field label {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+}
+.adm-field input,
+.adm-field select {
+  background: var(--color-bg);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color var(--t-fast);
+}
+.adm-field input:focus,
+.adm-field select:focus { border-color: var(--color-accent); }
+
+.adm-error {
+  display: none;
+  color: #c0392b;
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.adm-btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 11px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity var(--t-fast), transform var(--t-fast);
+  margin-top: var(--sp-xs);
+}
+.adm-btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.adm-btn-secondary {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 9px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+.adm-btn-secondary:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
+}
+
+/* Overlay de edição de foto */
+.adm-photo-wrap { position: relative !important; overflow: hidden; }
+.adm-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--t-fast);
+  z-index: 10;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.adm-photo-wrap:hover .adm-photo-overlay { background: rgba(0,0,0,0.42); }
+
+/* Linha de botões dentro do overlay */
+.adm-photo-overlay-btns {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--t-fast);
+  pointer-events: all;
+}
+.adm-photo-wrap:hover .adm-photo-overlay-btns { opacity: 1; }
+
+.adm-photo-btn {
+  color: #fff;
+  font-size: 0.68rem;
+  font-family: var(--font-body);
+  letter-spacing: 0.03em;
+  padding: 5px 9px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--t-fast);
+  white-space: nowrap;
+  line-height: 1.3;
+}
+.adm-photo-btn:hover { background: rgba(0,0,0,0.8); }
+
+/* Legacy tag (mantido por compatibilidade) */
+.adm-edit-tag {
+  color: #fff;
+  font-size: 0.72rem;
+  font-family: var(--font-body);
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transition: opacity var(--t-fast);
+  text-align: center;
+  padding: 4px 8px;
+  background: rgba(0,0,0,0.3);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+.adm-photo-wrap:hover .adm-edit-tag { opacity: 1; }
+
+/* ─── Painel de posição/recorte de foto ────────────────────── */
+.adm-pos-panel {
+  background: rgba(18, 18, 18, 0.95);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-md);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 180px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+  animation: adm-box-in 0.15s ease;
+}
+
+.adm-pos-fit-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.adm-pos-label {
+  font-size: 0.64rem;
+  color: rgba(255,255,255,0.5);
+  font-family: var(--font-body);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.adm-pos-fit-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+  border-radius: 3px;
+  padding: 3px 10px;
+  font-size: 0.65rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.03em;
+}
+.adm-pos-fit-btn:hover { background: rgba(255,255,255,0.2); }
+.adm-pos-fit-btn.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+/* Dica de arrastar */
+.adm-pos-drag-hint {
+  font-size: 0.64rem;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  font-style: italic;
+  font-family: var(--font-body);
+  padding: 2px 0;
+}
+
+/* Botão "✓ Pronto" */
+.adm-pos-done-btn {
+  background: var(--color-accent);
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 0.68rem;
+  font-family: var(--font-body);
+  padding: 6px 0;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity 0.15s;
+}
+.adm-pos-done-btn:hover { opacity: 0.82; }
+
+/* Container em modo arraste */
+.adm-pos-drag-mode {
+  cursor: crosshair !important;
+}
+.adm-pos-drag-mode img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ─── Galeria de infância extra ────────────────────────────── */
+.childhood-add-btn {
+  width: 160px;
+  height: 170px;
+  border-radius: var(--radius-md);
+  border: 1.5px dashed var(--color-accent);
+  background: var(--color-bg-card);
+  color: var(--color-accent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-style: italic;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all var(--t-fast);
+  flex-shrink: 0;
+}
+.childhood-add-btn:hover {
+  background: var(--color-accent-ultra);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--color-shadow);
+}
+.childhood-add-btn-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.childhood-extra-item .adm-gallery-del-btn { opacity: 0; }
+.childhood-extra-item:hover .adm-gallery-del-btn { opacity: 1; }
+
+/* Textos editáveis na árvore */
+.adm-editable-text {
+  outline: none;
+  border-bottom: 1px dashed var(--color-accent-light);
+  cursor: text;
+  border-radius: 2px;
+  padding: 0 2px;
+  min-width: 40px;
+  display: inline-block;
+  transition: border-color var(--t-fast), background var(--t-fast);
+}
+.adm-editable-text:focus {
+  border-bottom-color: var(--color-accent);
+  background: var(--color-accent-ultra);
+}
+
+/* Botão remover membro da árvore */
+.adm-del-member-btn {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: #e74c3c;
+  color: #fff;
+  font-size: 0.65rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--t-fast);
+  z-index: 20;
+}
+.extra-member-card { position: relative; }
+.extra-member-card:hover .adm-del-member-btn { opacity: 1; }
+
+/* Botão "Aumentar a árvore genealógica" */
+#adm-add-member-btn {
+  display: block;
+  margin: var(--sp-lg) auto 0;
+  background: var(--color-bg-card);
+  border: 1.5px dashed var(--color-accent);
+  color: var(--color-accent);
+  border-radius: var(--radius-full);
+  padding: 10px 28px;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--t-fast);
+  letter-spacing: 0.03em;
+}
+#adm-add-member-btn:hover {
+  background: var(--color-accent-ultra);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--color-shadow);
+}
+
+/* Botão "Adicionar foto à galeria" */
+#adm-add-gallery-btn {
+  display: block;
+  margin: 0 auto var(--sp-lg);
+  background: var(--color-bg-card);
+  border: 1.5px dashed var(--color-accent);
+  color: var(--color-accent);
+  border-radius: var(--radius-full);
+  padding: 10px 28px;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+#adm-add-gallery-btn:hover {
+  background: var(--color-accent-ultra);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--color-shadow);
+}
+
+/* ─── Botão de posição flutuante em itens de galeria ──────── */
+.gal-pos-btn {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--t-fast);
+  z-index: 20;
+  line-height: 1;
+}
+body.edit-mode .masonry-item .gal-pos-btn,
+body.edit-mode .profile-gallery-item .gal-pos-btn,
+body.edit-mode .childhood-extra-item .gal-pos-btn {
+  display: flex;
+}
+.masonry-item:hover .gal-pos-btn,
+.profile-gallery-item:hover .gal-pos-btn,
+.childhood-extra-item:hover .gal-pos-btn {
+  background: rgba(0,0,0,0.75);
+}
+
+/* Botão remover foto da galeria */
+.adm-gallery-del-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(231,76,60,0.9);
+  color: #fff;
+  font-size: 0.72rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--t-fast);
+  z-index: 20;
+}
+.adm-gallery-item { position: relative; }
+.adm-gallery-item:hover .adm-gallery-del-btn { opacity: 1; }
+
+
+/* ─── Sistema Firebase Auth & Editor ──────────────────────────── */
+
+/* Modal de autenticação (injetado por auth.js) */
+#auth-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  align-items: center;
+  justify-content: center;
+}
+#auth-modal.active { display: flex; }
+
+/* Admin bar: aparece abaixo da navbar (62px) */
+#adm-bar { top: 62px; }
+
+/* page-wrapper empurrado para baixo quando a barra de admin está visível */
+body.adm-bar-active .page-wrapper {
+  padding-top: 104px; /* 62px navbar + 42px admin bar */
+}
+
+/* Botão flutuante de edição (canto inferior esquerdo) */
+#edit-toggle-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1100;
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 10px 20px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 20px var(--color-shadow);
+  transition: opacity var(--t-fast), transform var(--t-fast), background var(--t-fast);
+}
+#edit-toggle-btn:hover  { opacity: 0.9; transform: translateY(-2px); }
+#edit-toggle-btn.save-mode { background: #27ae60; }
+
+/* Toast de feedback do editor (canto inferior esquerdo, acima do botão) */
+#editor-toast {
+  display: none;
+  position: fixed;
+  bottom: 76px;
+  left: 24px;
+  z-index: 1100;
+  background: #27ae60;
+  color: #fff;
+  padding: 9px 18px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  animation: adm-box-in 0.2s ease;
+  pointer-events: none;
+}
+#editor-toast.error { background: #e74c3c; }
+
+/* ─── Membros extras da árvore ──────────────────────────────── */
+#tree-extra-members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-lg);
+  padding: var(--sp-xl) var(--sp-md) var(--sp-sm);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ─── Formulários inline (galeria + árvore) ─────────────────── */
+.adm-inline-form {
+  display: flex;
+  gap: var(--sp-md);
+  align-items: flex-start;
+  background: var(--color-bg-card);
+  border: 1.5px dashed var(--color-accent);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-lg);
+  margin: 0 auto var(--sp-lg);
+  max-width: 560px;
+  animation: adm-box-in 0.2s ease;
+}
+
+.adm-form-preview {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.adm-form-preview-circle {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+}
+
+.adm-form-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+
+.adm-form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+}
+
+.adm-field-input {
+  background: var(--color-bg);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color var(--t-fast);
+  width: 100%;
+  box-sizing: border-box;
+}
+.adm-field-input:focus { border-color: var(--color-accent); }
+
+/* ─── Input de arquivo estilizado ──────────────────────────────── */
+input[type="file"].adm-field-input {
+  padding: 5px 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+input[type="file"].adm-field-input::file-selector-button {
+  background: var(--color-accent-ultra);
+  border: 1.5px solid var(--color-accent);
+  border-radius: var(--radius-full);
+  color: var(--color-accent);
+  padding: 6px 18px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background var(--t-fast);
+}
+
+input[type="file"].adm-field-input:hover::file-selector-button {
+  background: var(--color-accent-light);
+}
+
+.adm-form-actions {
+  display: flex;
+  gap: var(--sp-sm);
+  margin-top: var(--sp-xs);
+}
+
+/* ─── Foto de perfil do bebê ────────────────────────────────── */
+.baby-profile-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--color-bg-card);
+  border: 2px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: var(--sp-lg) auto;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 32px var(--color-shadow);
+  transition: all var(--t-smooth);
+}
+.baby-profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.baby-photo-hint {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+  .adm-inline-form {
+    flex-direction: column;
+  }
+  .adm-form-preview {
+    width: 100%;
+    height: 120px;
+  }
+}
+
+/* ─── Placeholder de galeria clicável (edit mode) ─────────────── */
+.profile-gallery-item.ph-clickable {
+  cursor: pointer;
+}
+
+.profile-gallery-item.ph-clickable:hover .gallery-ph {
+  color: var(--color-accent);
+}
+
+.profile-gallery-item.ph-clickable:hover .gallery-ph-icon {
+  opacity: 0.8;
+}
+
+/* ─── Galeria pessoal: célula de adicionar foto ─────────────── */
+.profile-gallery-add-cell {
+  background: var(--color-bg-card);
+  border: 1.5px dashed var(--color-accent);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-style: italic;
+  transition: all var(--t-fast);
+  aspect-ratio: 1;
+  min-height: 80px;
+}
+
+.profile-gallery-add-cell:hover {
+  background: var(--color-accent-ultra);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--color-shadow);
+}
+
+.profile-gallery-add-cell-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+/* ─── Formulário de linha da árvore ─────────────────────────── */
+#adm-tree-row-form {
+  max-width: 640px;
+  flex-direction: column;
+}
+
+.adm-couple-previews {
+  display: flex;
+  gap: var(--sp-sm);
+}
+
+.adm-couple-previews > div {
+  flex: 1;
+}
+
+/* ─── Lista de filhos no formulário da árvore ───────────────── */
+.adm-children-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+  margin-top: var(--sp-xs);
+}
+
+.adm-child-entry {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  font-size: 0.82rem;
+  color: var(--color-text);
+}
+
+.adm-child-entry span {
+  flex: 1;
+}
+
+.adm-child-remove {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  transition: background var(--t-fast);
+  font-family: var(--font-body);
+}
+
+.adm-child-remove:hover {
+  background: #fdecea;
+}
+
+/* ─── Controles de edição por card de pet ───────────────────── */
+.pet-edit-controls {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-top: var(--sp-xs);
+}

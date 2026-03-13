@@ -1,0 +1,20 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ── Fotos do site ────────────────────────────────────────────
+    // Leitura pública; upload apenas para membros da família autenticados.
+    match /photos/{allPaths=**} {
+      allow read: if true;
+      allow write: if isFamily();
+    }
+
+    // ── Função auxiliar: verifica role "family" no Firestore ─────
+    function isFamily() {
+      return request.auth != null
+        && firestore.exists(/databases/(default)/documents/users/$(request.auth.uid))
+        && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'family';
+    }
+  }
+}

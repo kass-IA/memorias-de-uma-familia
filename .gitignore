@@ -1,0 +1,4 @@
+# Arquivos com chaves e senhas - nunca enviar para o GitHub
+fotos/mae/api key.txt
+*.env
+.env*

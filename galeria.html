@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galeria de Memórias -Memórias de uma Família</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌳</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/galeria.css" />
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onerror="this.onerror=null;this.src='https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js'"></script>
+</head>
+<body data-page="galeria">
+
+  <!-- ═══════════════════════════════════════
+       NAVEGAÇÃO
+  ═══════════════════════════════════════ -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      Memórias <span>de uma Família</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="familia.html">Família</a></li>
+      <li><a href="mae.html">Mãe</a></li>
+      <li><a href="pai.html">Pai</a></li>
+      <li><a href="bebe.html">Bebê</a></li>
+      <li><a href="pet.html">Pet</a></li>
+      <li><a href="galeria.html" class="active">Galeria</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       CONTEÚDO PRINCIPAL
+  ═══════════════════════════════════════ -->
+  <main class="page-wrapper">
+
+    <!-- HERO DA GALERIA -->
+    <header class="gallery-hero">
+      <div style="padding:var(--sp-xl) var(--sp-md) var(--sp-lg); text-align:center; position:relative; z-index:1">
+        <h1 class="anim-fade-up">Galeria de Memórias</h1>
+        <span class="ornament">✦ ✦ ✦</span>
+        <p style="color:var(--color-text-muted); font-size:0.88rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:300" class="anim-fade-up delay-1">
+          Cada foto, um tesouro. Cada momento, eterno.
+        </p>
+        <span class="gallery-count anim-fade-up delay-2" id="photoCount"></span>
+      </div>
+    </header>
+
+    <!-- FILTROS POR CATEGORIA -->
+    <div class="gallery-filters anim-fade-up delay-2" style="padding:0 var(--sp-md)">
+      <button class="filter-btn active" data-filter="all">Todas</button>
+      <button class="filter-btn" data-filter="familia">Família</button>
+      <button class="filter-btn" data-filter="mae">Mãe</button>
+      <button class="filter-btn" data-filter="pai">Pai</button>
+      <button class="filter-btn" data-filter="bebe">Bebê</button>
+      <button class="filter-btn" data-filter="pet">Pet</button>
+      <button class="filter-btn" data-filter="viagem">Viagens</button>
+      <button class="filter-btn" data-filter="especial">Especiais</button>
+    </div>
+
+    
+
+    <!-- ═══ GALERIA MASONRY ═══════════════════ -->
+    <div class="gallery-masonry" id="galleryGrid">
+
+      <!-- ══ FOTOS REAIS ══════════════════════════════════════════ -->
+
+      <!-- Kassi na infância -->
+      <div class="masonry-item ratio-tall" data-category="mae" data-lightbox="fotos/mae/baby kassi.jpg">
+        <img src="fotos/mae/baby kassi.jpg" alt="Kassi na infância" style="object-position: center 42%;" />
+        <span class="item-label">Kassi na infância 🧸</span>
+      </div>
+
+      <!-- Natan bebê -->
+      <div class="masonry-item ratio-square" data-category="pai" data-lightbox="fotos/pai/baby natan.jpg">
+        <img src="fotos/pai/baby natan.jpg" alt="Natan bebê" style="object-position: center 28%;" />
+        <span class="item-label">Natan bebê 🧸</span>
+      </div>
+
+      <!-- Xodó na cama -->
+      <div class="masonry-item ratio-tall" data-category="pet" data-lightbox="fotos/pet/xodo01.jpg">
+        <img src="fotos/pet/xodo01.jpg" alt="Xodó" style="object-position: center 28%;" />
+        <span class="item-label">Xodó na ponta da cama 🐱</span>
+      </div>
+
+      <!-- Xodó laranjinha -->
+      <div class="masonry-item ratio-square" data-category="pet" data-lightbox="fotos/pet/xodo.jpg">
+        <img src="fotos/pet/xodo.jpg" alt="Xodó" style="object-position: 52% 22%;" />
+        <span class="item-label">Imenso 😄🐾</span>
+      </div>
+
+      <!-- ══ ESPAÇOS PARA FOTOS FUTURAS ════════════════════════════ -->
+
+      <!-- PLACEHOLDERS -Família -->
+      <div class="masonry-item" data-category="familia">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">👨‍👩‍👧</span>
+          Momento em família<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <div class="masonry-item" data-category="familia">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">🏡</span>
+          Lar doce lar<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <div class="masonry-item" data-category="especial">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">🎉</span>
+          Celebração<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <!-- PLACEHOLDERS -Mãe -->
+      <div class="masonry-item" data-category="mae">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">🌸</span>
+          Mamãe<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <div class="masonry-item" data-category="mae">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">💄</span>
+          Momento especial<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <!-- PLACEHOLDERS -Pai -->
+      <div class="masonry-item" data-category="pai">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">🌿</span>
+          Papai<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <div class="masonry-item" data-category="pai">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">⚽</span>
+          Hobby do Pai<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <!-- PLACEHOLDERS -Bebê -->
+      <div class="masonry-item" data-category="bebe">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">👶</span>
+          Bebê<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <div class="masonry-item" data-category="bebe">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">🌟</span>
+          Ultrassom<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <div class="masonry-item" data-category="bebe">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">🧸</span>
+          Enxoval<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <!-- PLACEHOLDERS -Viagem -->
+      <div class="masonry-item" data-category="viagem">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">✈️</span>
+          Viagem juntos<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <div class="masonry-item" data-category="viagem">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">🌅</span>
+          Pôr do sol<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <!-- PLACEHOLDERS -Especiais -->
+      <div class="masonry-item" data-category="especial">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">💍</span>
+          Momento especial<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <div class="masonry-item" data-category="familia">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">🎂</span>
+          Aniversário<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <div class="masonry-item" data-category="especial">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">🌺</span>
+          Primavera da família<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+      <div class="masonry-item" data-category="familia">
+        <div class="masonry-ph">
+          <span class="masonry-ph-icon">🍽️</span>
+          À mesa juntos<br/><em style="font-size:0.65rem">Adicionar foto aqui</em>
+        </div>
+      </div>
+
+    </div><!-- /gallery-masonry -->
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Fechar lightbox">✕</button>
+      <img id="lightbox-img" src="" alt="Foto ampliada" />
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer class="page-footer">
+      <span class="footer-brand-text">Memórias de uma Família</span>
+      &copy; <span id="year"></span> -Todos os direitos reservados. Feito com amor ♥
+    </footer>
+
+  </main>
+
+  <script src="js/script.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/editor.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Conta e exibe o número de fotos com imagem real
+    document.addEventListener('DOMContentLoaded', () => {
+      const items   = document.querySelectorAll('.masonry-item');
+      const withImg = document.querySelectorAll('.masonry-item img').length;
+      const countEl = document.getElementById('photoCount');
+      if (countEl && withImg > 0) {
+        countEl.textContent = `${withImg} memória${withImg !== 1 ? 's' : ''} guardada${withImg !== 1 ? 's' : ''}`;
+      } else if (countEl) {
+        countEl.textContent = `${items.length} espaços esperando por fotos`;
+      }
+    });
+  </script>
+</body>
+</html>

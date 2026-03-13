@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nossa Família -Memórias de uma Família</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌳</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/familia.css" />
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onerror="this.onerror=null;this.src='https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js'"></script>
+</head>
+<body data-page="familia">
+
+  <!-- ═══════════════════════════════════════
+       NAVEGAÇÃO
+  ═══════════════════════════════════════ -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      Memórias <span>de uma Família</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="familia.html" class="active">Família</a></li>
+      <li><a href="mae.html">Mãe</a></li>
+      <li><a href="pai.html">Pai</a></li>
+      <li><a href="bebe.html">Bebê</a></li>
+      <li><a href="pet.html">Pet</a></li>
+      <li><a href="galeria.html">Galeria</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       CONTEÚDO PRINCIPAL
+  ═══════════════════════════════════════ -->
+  <main class="page-wrapper">
+
+    <!-- HERO -->
+    <header class="family-hero">
+      <div class="family-hero" style="padding:var(--sp-xl) var(--sp-md) var(--sp-lg); text-align:center">
+        <h1 class="anim-fade-up">Nossa Família</h1>
+        <span class="ornament">✦ ✦ ✦</span>
+        <p style="color:var(--color-text-muted); font-size:0.88rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:300" class="anim-fade-up delay-1">
+          Uma história de amor em construção
+        </p>
+
+        <!-- Frase especial -->
+        <blockquote class="family-quote anim-fade-up delay-2">
+          <p data-field="quote">"Família não é algo importante, é tudo."</p>
+          <cite data-field="quote_author">- Michael J. Fox</cite>
+        </blockquote>
+      </div>
+    </header>
+
+    <!-- CONTEÚDO DA FAMÍLIA -->
+    <div class="family-content">
+
+      <!-- ─── Estatísticas / Números ─── -->
+      <section class="section-block anim-fade-up" style="text-align:center">
+        <div class="stats-bar">
+          <div class="stat-item">
+            <span class="stat-number">2</span>
+            <span class="stat-label">Corações apaixonados</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">1</span>
+            <span class="stat-label">Bebê a caminho</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Amor para dar</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Mini Árvore Genealógica ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">🌳</span> Árvore Genealógica
+        </h2>
+
+        <div class="mini-tree-wrapper">
+          <h3>A Árvore da Nossa Família</h3>
+
+          <!-- Mini-árvore visual -->
+          <div class="mini-tree">
+
+            <div class="generation-parents" style="gap:0">
+
+              <!-- Mãe mini -->
+              <div class="family-member-mini" onclick="window.location.href='mae.html'">
+                <div class="photo-circle" style="width:90px;height:90px; cursor:pointer;">
+                  <!--
+                    FOTO MÃE: <img src="fotos/mae.jpg" alt="Mãe" />
+                  -->
+                  <span class="ph-icon" style="font-size:1.8rem">🌸</span>
+                </div>
+                <p class="member-name" style="font-size:0.9rem">Kassi</p>
+              </div>
+
+              <!-- Conector -->
+              <div class="couple-connector" style="padding-top:35px">
+                <div class="conn-line" style="width:30px"></div>
+                <span class="conn-heart" style="font-size:1.1rem">♥</span>
+                <div class="conn-line" style="width:30px"></div>
+              </div>
+
+              <!-- Pai mini -->
+              <div class="family-member-mini" onclick="window.location.href='pai.html'">
+                <div class="photo-circle" style="width:90px;height:90px; cursor:pointer;">
+                  <!--
+                    FOTO PAI: <img src="fotos/pai.jpg" alt="Pai" />
+                  -->
+                  <span class="ph-icon" style="font-size:1.8rem">🌿</span>
+                </div>
+                <p class="member-name" style="font-size:0.9rem">Natan</p>
+              </div>
+
+            </div><!-- /generation-parents -->
+
+            <!-- Linha vertical -->
+            <div class="tree-v-line" style="height:50px"></div>
+
+            <!-- Bebê mini -->
+            <div class="family-member-mini" onclick="window.location.href='bebe.html'">
+              <div class="photo-circle" style="width:90px;height:90px; cursor:pointer;">
+                <!--
+                  FOTO BEBÊ: <img src="fotos/bebe.jpg" alt="Bebê" />
+                -->
+                <span class="ph-icon" style="font-size:1.8rem" data-baby-icon>👶</span>
+              </div>
+              <p class="member-name" style="font-size:0.9rem" data-baby-name>Bebê</p>
+            </div>
+
+          </div><!-- /mini-tree -->
+
+          <a href="index.html" class="btn-primary" style="margin-top:var(--sp-lg)">
+            Ver árvore completa →
+          </a>
+        </div>
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Nossa História ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">📖</span> Nossa História
+        </h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="timeline-year"><!-- EDITE: Ano --> O começo</p>
+            <p class="timeline-title"><!-- EDITE --> Quando nos conhecemos</p>
+            <p class="timeline-desc"><!-- EDITE --> A história de como se encontraram e o amor começou a florescer.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year"><!-- EDITE: Ano --></p>
+            <p class="timeline-title"><!-- EDITE --> Momentos marcantes</p>
+            <p class="timeline-desc"><!-- EDITE --> Viagens, conquistas e aventuras juntos.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year"><!-- EDITE: Ano --></p>
+            <p class="timeline-title"><!-- EDITE --> A decisão</p>
+            <p class="timeline-desc"><!-- EDITE --> Quando decidiram formar uma família.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-year"><!-- EDITE: Ano --></p>
+            <p class="timeline-title"><!-- EDITE --> A chegada do bebê</p>
+            <p class="timeline-desc"><!-- EDITE --> A notícia mais linda e o início de um novo capítulo.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Valores da Família ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">💛</span> Nossos Valores
+        </h2>
+
+        <div class="values-grid">
+
+          <div class="value-card">
+            <span class="value-icon">❤️</span>
+            <p class="value-title">Amor incondicional</p>
+            <p class="value-desc">Nossa base é o amor, em todos os momentos, nos sorrisos e também nas dificuldades.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon">🤝</span>
+            <p class="value-title">Cumplicidade</p>
+            <p class="value-desc">Somos um time. Nos apoiamos, nos ouvimos e crescemos juntos a cada dia.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon">😄</span>
+            <p class="value-title">Alegria</p>
+            <p class="value-desc">A leveza e o humor fazem parte da nossa essência. O riso é o nosso idioma preferido.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon">🌱</span>
+            <p class="value-title">Crescimento</p>
+            <p class="value-desc">Acreditamos em evoluir sempre, individualmente e como família, sem parar de aprender.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon">🛡️</span>
+            <p class="value-title">Segurança</p>
+            <p class="value-desc">Cada membro da nossa família sabe que tem um lar seguro para voltar sempre.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon">✨</span>
+            <p class="value-title">Gratidão</p>
+            <p class="value-desc">Somos gratos por cada momento juntos, pequeno ou grande, comum ou extraordinário.</p>
+          </div>
+
+        </div><!-- /values-grid -->
+      </section>
+
+      <div class="divider-ornament">✦ ✦ ✦</div>
+
+      <!-- ─── Galeria de Momentos ─── -->
+      <section class="section-block anim-fade-up">
+        <h2 class="section-title">
+          <span class="sec-icon">📸</span> Momentos Juntos
+        </h2>
+        <p class="prose" style="margin-bottom:var(--sp-md)">
+          Nossas memórias favoritas serão guardadas aqui. Acesse a
+          <a href="galeria.html" style="color:var(--color-accent)">galeria completa</a>
+          para ver todos os momentos.
+        </p>
+
+        <div class="profile-gallery-grid">
+          <div class="profile-gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">📷</span></div></div>
+          <div class="profile-gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">🌅</span></div></div>
+          <div class="profile-gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">🎉</span></div></div>
+          <div class="profile-gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">✈️</span></div></div>
+          <div class="profile-gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">🍽️</span></div></div>
+          <div class="profile-gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">🏡</span></div></div>
+          <div class="profile-gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">🎂</span></div></div>
+          <div class="profile-gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">🌸</span></div></div>
+        </div>
+
+        <div style="text-align:center; margin-top:var(--sp-lg)">
+          <a href="galeria.html" class="btn-primary">Ver galeria completa →</a>
+        </div>
+      </section>
+
+    </div><!-- /family-content -->
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Fechar">✕</button>
+      <img id="lightbox-img" src="" alt="Foto ampliada" />
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer class="page-footer">
+      <span class="footer-brand-text">Memórias de uma Família</span>
+      &copy; <span id="year"></span> -Todos os direitos reservados. Feito com amor ♥
+    </footer>
+
+  </main>
+
+  <script src="js/script.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/editor.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

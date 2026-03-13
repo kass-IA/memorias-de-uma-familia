@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memórias de uma Família</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌳</text></svg>" />
+  <meta name="description" content="Árvore genealógica interativa da nossa família." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/index.css" />
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onerror="this.onerror=null;this.src='https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js'"></script>
+</head>
+<body data-page="index">
+
+  <!-- ═══════════════════════════════════════
+       NAVEGAÇÃO
+  ═══════════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Menu principal">
+    <a href="index.html" class="nav-brand">
+      Memórias <span>de uma Família</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Início</a></li>
+      <li><a href="familia.html">Família</a></li>
+      <li><a href="mae.html">Mãe</a></li>
+      <li><a href="pai.html">Pai</a></li>
+      <li><a href="bebe.html">Bebê</a></li>
+      <li><a href="pet.html">Pet</a></li>
+      <li><a href="galeria.html">Galeria</a></li>
+    </ul>
+
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       CONTEÚDO PRINCIPAL
+  ═══════════════════════════════════════ -->
+  <main class="page-wrapper">
+
+    <!-- Hero -->
+    <header class="tree-hero anim-fade-up">
+      <h1>Nossa Família</h1>
+      <span class="ornament">✦ ✦ ✦</span>
+      <p class="subtitle" data-field="subtitle">Uma história de amor que cresce</p>
+    </header>
+
+    <!-- ═══ ÁRVORE GENEALÓGICA ══════════════ -->
+    <section class="family-tree" aria-label="Árvore genealógica">
+
+      <!-- GERAÇÃO 1: Pais -->
+      <div class="generation-parents anim-fade-up delay-2">
+
+        <!-- MÃE -->
+        <div class="member-card parent-card" onclick="window.location.href='mae.html'" role="button" aria-label="Ver perfil da Mãe" tabindex="0">
+          <div class="photo-circle" data-photo-key="tree_mae">
+            <!--
+              PARA ADICIONAR FOTO DA MÃE:
+              Substitua o bloco abaixo por:
+              <img src="fotos/mae.jpg" alt="Mãe" />
+            -->
+            <img src="fotos/mae/kassi arvore.jpg" alt="Mãe" style="object-position: center 30%;" />
+          </div>
+          <p class="member-name" data-text-key="name_mae">Kassi</p>
+          <p class="member-role" data-text-key="role_mae">Mãe</p>
+        </div>
+
+        <!-- CONECTOR CORAÇÃO -->
+        <div class="couple-connector" aria-hidden="true">
+          <div class="conn-line"></div>
+          <span class="conn-heart">♥</span>
+          <div class="conn-line"></div>
+        </div>
+
+        <!-- PAI -->
+        <div class="member-card parent-card" onclick="window.location.href='pai.html'" role="button" aria-label="Ver perfil do Pai" tabindex="0">
+          <div class="photo-circle" data-photo-key="tree_pai">
+            <!--
+              PARA ADICIONAR FOTO DO PAI:
+              Substitua o bloco abaixo por:
+              <img src="fotos/pai.jpg" alt="Pai" />
+            -->
+            <img src="fotos/pai/natanael avore.jpg" alt="Pai" style="object-position: 42% 22%;" />
+          </div>
+          <p class="member-name" data-text-key="name_pai">Natan</p>
+          <p class="member-role" data-text-key="role_pai">Pai</p>
+        </div>
+
+      </div><!-- /generation-parents -->
+
+      <!-- LINHA VERTICAL -->
+      <div class="tree-v-line anim-fade-up delay-3" aria-hidden="true"></div>
+
+      <!-- GERAÇÃO 2: Bebê + Xodó -->
+      <div class="generation-children has-siblings anim-fade-up delay-4">
+
+        <!-- ── COLUNA: Bebê ── -->
+        <div class="child-branch">
+          <div class="child-stem" aria-hidden="true"></div>
+
+          <!-- Baby-card clicável: vai para bebe.html. Botões de gênero param a propagação. -->
+          <div class="baby-card"
+               onclick="window.location.href='bebe.html'"
+               role="button" tabindex="0" aria-label="Ver página do Bebê">
+
+            <!-- Wrapper da foto com overlay de gênero -->
+            <div class="baby-photo-wrap" role="group" aria-label="Seleção de gênero do bebê">
+
+              <div class="photo-circle" data-photo-key="tree_bebe">
+                <!--
+                  PARA ADICIONAR FOTO DO BEBÊ:
+                  Substitua o bloco abaixo por:
+                  <img src="fotos/bebe.jpg" alt="Bebê" />
+                -->
+                <span class="ph-icon" data-baby-icon>👶</span>
+                <span class="ph-label" data-baby-ph>?</span>
+              </div>
+
+              <!-- Overlay: aparece ao passar o mouse (desktop) ou tocar (mobile) -->
+              <div class="gender-overlay" role="group" aria-label="Escolha o gênero" onclick="event.stopPropagation()">
+                <button class="gender-btn girl-btn"
+                        onclick="event.stopPropagation(); selectGender('girl')"
+                        aria-label="Selecionar Menina">
+                  <span class="btn-emoji">🎀</span> Menina
+                </button>
+                <button class="gender-btn boy-btn"
+                        onclick="event.stopPropagation(); selectGender('boy')"
+                        aria-label="Selecionar Menino">
+                  <span class="btn-emoji">⚓</span> Menino
+                </button>
+                <button class="gender-btn bebe-btn"
+                        onclick="event.stopPropagation(); window.location.href='bebe.html'"
+                        aria-label="Ver página do Bebê">
+                  <span class="btn-emoji">👶</span> Bebê
+                </button>
+              </div>
+
+            </div><!-- /baby-photo-wrap -->
+
+            <!-- Nome dinâmico do bebê -->
+            <p class="member-name" data-baby-name>Bebê</p>
+            <p class="member-role">Filho(a)</p>
+
+            <!-- Status do tema atual -->
+            <div class="theme-status" id="themeStatus" style="display:none">
+              <span class="theme-dot"></span>
+              <span data-baby-badge></span>
+            </div>
+
+          </div><!-- /baby-card -->
+        </div><!-- /child-branch bebê -->
+
+        <!-- ── COLUNA: Xodó (Pet) ── -->
+        <div class="child-branch">
+          <div class="child-stem" aria-hidden="true"></div>
+
+          <div class="member-card parent-card"
+               onclick="window.location.href='pet.html'"
+               role="button" tabindex="0" aria-label="Ver página dos Pets">
+            <div class="photo-circle" data-photo-key="tree_xodo">
+              <img src="fotos/pet/xodo.jpg" alt="Xodó" style="object-position: 52% 18%;" />
+            </div>
+            <p class="member-name">Xodó</p>
+            <p class="member-role">Filho Pet</p>
+          </div>
+
+        </div><!-- /child-branch xodo -->
+
+      </div><!-- /generation-children -->
+
+    </section><!-- /family-tree -->
+
+    <!-- Família Estendida (membros extras adicionados via editor) -->
+    <div id="tree-extra-members" style="display:none" aria-label="Família estendida"></div>
+
+    <!-- Dica interativa -->
+    <p style="text-align:center; color:var(--color-text-muted); font-size:0.78rem; margin-top:var(--sp-lg); font-style:italic; letter-spacing:0.05em;">
+      Passe o mouse no bebê para revelar o gênero · Clique nos pais para ver o perfil completo · Clique no Xodó para abrir a página dos pets
+    </p>
+
+    <!-- ═══ RODAPÉ ════════════════════════════ -->
+    <footer class="tree-footer">
+      <span class="footer-brand-text">Memórias de uma Família</span>
+      &copy; <span id="year"></span> -Todos os direitos reservados.
+      Feito com amor ♥
+    </footer>
+
+  </main><!-- /page-wrapper -->
+
+  <script src="js/script.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/editor.js"></script>
+
+  <!-- Personalizações da página inicial (executado após script.js) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Estende selectGender: apenas muda tema/nome e mostra o badge
+      const baseSelect = window.selectGender;
+      window.selectGender = function(gender) {
+        baseSelect(gender); // aplica tema e atualiza nomes
+        const statusEl = document.getElementById('themeStatus');
+        if (statusEl) statusEl.style.display = 'inline-flex';
+      };
+
+      // Atualiza ano do copyright
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Permite navegar com teclado (Enter) nos cards
+      document.querySelectorAll('[tabindex="0"]').forEach(el => {
+        el.addEventListener('keydown', e => {
+          if (e.key === 'Enter') el.click();
+        });
+      });
+
+      // Aplica estado salvo (se houver) para mostrar o badge
+      const saved = localStorage.getItem('familyTheme');
+      if (saved && saved !== 'default') {
+        const statusEl = document.getElementById('themeStatus');
+        if (statusEl) statusEl.style.display = 'inline-flex';
+      }
+    });
+  </script>
+</body>
+</html>

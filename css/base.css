@@ -1,0 +1,320 @@
+/* ============================================================
+   MEMÓRIAS DE UMA FAMÍLIA — base.css
+   Variáveis de tema e reset global
+   ============================================================ */
+
+/* ─── 1. VARIÁVEIS DE TEMA ─────────────────────────────────── */
+:root {
+  /* Tema Padrão (Neutro / Branco) */
+  --color-bg:              #fdfcfb;
+  --color-bg-secondary:    #f8f5f0;
+  --color-bg-card:         rgba(255, 255, 255, 0.92);
+  --color-accent:          #c49aad;
+  --color-accent-light:    #f0e2e8;
+  --color-accent-ultra:    #faf3f5;
+  --color-line:            #d4b0c2;
+  --color-text:            #3d3535;
+  --color-text-muted:      #9a8a90;
+  --color-border:          rgba(212, 176, 194, 0.35);
+  --color-shadow:          rgba(180, 120, 140, 0.13);
+  --color-nav:             rgba(253, 252, 251, 0.96);
+  --color-heart:           #d4889f;
+  --color-btn-bg:          rgba(255,255,255,0.9);
+  --color-btn-border:      rgba(212,176,194,0.5);
+  --color-btn-text:        #3d3535;
+
+  /* Tipografia */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body:    'Lato', 'Helvetica Neue', sans-serif;
+
+  /* Espaçamentos */
+  --sp-xs: 0.3rem;
+  --sp-sm: 0.6rem;
+  --sp-md: 1rem;
+  --sp-lg: 1.8rem;
+  --sp-xl: 3rem;
+  --sp-2xl: 5rem;
+
+  /* Bordas */
+  --radius-sm:   6px;
+  --radius-md:   14px;
+  --radius-lg:   22px;
+  --radius-full: 9999px;
+
+  /* Transições */
+  --t-fast:   0.2s ease;
+  --t-smooth: 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  --t-slow:   0.85s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Tema Menina (Rosa Bebê) ──────────────────────────────── */
+[data-theme="girl"] {
+  --color-bg:           #fff5f8;
+  --color-bg-secondary: #ffe8f0;
+  --color-bg-card:      rgba(255, 245, 250, 0.95);
+  --color-accent:       #e8739a;
+  --color-accent-light: #fdd5e5;
+  --color-accent-ultra: #fff5f8;
+  --color-line:         #f0a0be;
+  --color-text:         #5c2d42;
+  --color-text-muted:   #b87898;
+  --color-border:       rgba(240, 160, 190, 0.4);
+  --color-shadow:       rgba(232, 115, 154, 0.18);
+  --color-nav:          rgba(255, 245, 248, 0.96);
+  --color-heart:        #e8739a;
+  --color-btn-bg:       rgba(255, 245, 248, 0.95);
+  --color-btn-border:   rgba(240, 160, 190, 0.5);
+  --color-btn-text:     #5c2d42;
+}
+
+/* ─── Tema Pet (Laranja Bebê) ──────────────────────────────── */
+[data-theme="pet"] {
+  --color-bg:           #fff8f3;
+  --color-bg-secondary: #ffecd8;
+  --color-bg-card:      rgba(255, 248, 243, 0.95);
+  --color-accent:       #e07828;
+  --color-accent-light: #fcd4a0;
+  --color-accent-ultra: #fff5ea;
+  --color-line:         #f0a060;
+  --color-text:         #4a2c10;
+  --color-text-muted:   #b07840;
+  --color-border:       rgba(240, 160, 96, 0.4);
+  --color-shadow:       rgba(224, 120, 40, 0.15);
+  --color-nav:          rgba(255, 248, 243, 0.96);
+  --color-heart:        #e07828;
+  --color-btn-bg:       rgba(255, 248, 243, 0.95);
+  --color-btn-border:   rgba(240, 160, 96, 0.5);
+  --color-btn-text:     #4a2c10;
+}
+
+/* ─── Temas Pet por Cor (Pastéis) ─────────────────────────── */
+[data-theme="pet-green"] {
+  --color-bg:           #f2faf2;
+  --color-bg-secondary: #d8f0d8;
+  --color-bg-card:      rgba(242, 250, 242, 0.95);
+  --color-accent:       #5aaa5a;
+  --color-accent-light: #b8e0b8;
+  --color-accent-ultra: #eef8ee;
+  --color-line:         #7dcc7d;
+  --color-text:         #1a4020;
+  --color-text-muted:   #528052;
+  --color-border:       rgba(125, 204, 125, 0.4);
+  --color-shadow:       rgba(90, 170, 90, 0.15);
+  --color-nav:          rgba(242, 250, 242, 0.96);
+  --color-heart:        #5aaa5a;
+  --color-btn-bg:       rgba(242, 250, 242, 0.95);
+  --color-btn-border:   rgba(125, 204, 125, 0.5);
+  --color-btn-text:     #1a4020;
+}
+
+[data-theme="pet-blue"] {
+  --color-bg:           #eef6fc;
+  --color-bg-secondary: #d0e8f8;
+  --color-bg-card:      rgba(238, 246, 252, 0.95);
+  --color-accent:       #5096cc;
+  --color-accent-light: #b0d4f0;
+  --color-accent-ultra: #e8f4fc;
+  --color-line:         #70b8e8;
+  --color-text:         #162e4a;
+  --color-text-muted:   #4878a0;
+  --color-border:       rgba(112, 184, 232, 0.4);
+  --color-shadow:       rgba(80, 150, 204, 0.15);
+  --color-nav:          rgba(238, 246, 252, 0.96);
+  --color-heart:        #5096cc;
+  --color-btn-bg:       rgba(238, 246, 252, 0.95);
+  --color-btn-border:   rgba(112, 184, 232, 0.5);
+  --color-btn-text:     #162e4a;
+}
+
+[data-theme="pet-pink"] {
+  --color-bg:           #fff0f6;
+  --color-bg-secondary: #ffd8ea;
+  --color-bg-card:      rgba(255, 240, 246, 0.95);
+  --color-accent:       #e0689a;
+  --color-accent-light: #f8c0d8;
+  --color-accent-ultra: #fff5f8;
+  --color-line:         #f090bc;
+  --color-text:         #501830;
+  --color-text-muted:   #a85878;
+  --color-border:       rgba(240, 144, 188, 0.4);
+  --color-shadow:       rgba(224, 104, 154, 0.15);
+  --color-nav:          rgba(255, 240, 246, 0.96);
+  --color-heart:        #e0689a;
+  --color-btn-bg:       rgba(255, 240, 246, 0.95);
+  --color-btn-border:   rgba(240, 144, 188, 0.5);
+  --color-btn-text:     #501830;
+}
+
+[data-theme="pet-red"] {
+  --color-bg:           #fff3f3;
+  --color-bg-secondary: #ffd8d8;
+  --color-bg-card:      rgba(255, 243, 243, 0.95);
+  --color-accent:       #cc5050;
+  --color-accent-light: #f0b8b8;
+  --color-accent-ultra: #fff0f0;
+  --color-line:         #e07070;
+  --color-text:         #4a1010;
+  --color-text-muted:   #a05050;
+  --color-border:       rgba(224, 112, 112, 0.4);
+  --color-shadow:       rgba(204, 80, 80, 0.15);
+  --color-nav:          rgba(255, 243, 243, 0.96);
+  --color-heart:        #cc5050;
+  --color-btn-bg:       rgba(255, 243, 243, 0.95);
+  --color-btn-border:   rgba(224, 112, 112, 0.5);
+  --color-btn-text:     #4a1010;
+}
+
+[data-theme="pet-yellow"] {
+  --color-bg:           #fffdf0;
+  --color-bg-secondary: #f8eec0;
+  --color-bg-card:      rgba(255, 253, 240, 0.95);
+  --color-accent:       #c8a030;
+  --color-accent-light: #ecd890;
+  --color-accent-ultra: #fffaea;
+  --color-line:         #e0c060;
+  --color-text:         #3a2c08;
+  --color-text-muted:   #906820;
+  --color-border:       rgba(224, 192, 96, 0.4);
+  --color-shadow:       rgba(200, 160, 48, 0.15);
+  --color-nav:          rgba(255, 253, 240, 0.96);
+  --color-heart:        #c8a030;
+  --color-btn-bg:       rgba(255, 253, 240, 0.95);
+  --color-btn-border:   rgba(224, 192, 96, 0.5);
+  --color-btn-text:     #3a2c08;
+}
+
+[data-theme="pet-gray"] {
+  --color-bg:           #f5f6f8;
+  --color-bg-secondary: #e0e4ec;
+  --color-bg-card:      rgba(245, 246, 248, 0.95);
+  --color-accent:       #7888a0;
+  --color-accent-light: #c0c8d8;
+  --color-accent-ultra: #eef0f4;
+  --color-line:         #98a8bc;
+  --color-text:         #242838;
+  --color-text-muted:   #607080;
+  --color-border:       rgba(152, 168, 188, 0.4);
+  --color-shadow:       rgba(120, 136, 160, 0.15);
+  --color-nav:          rgba(245, 246, 248, 0.96);
+  --color-heart:        #7888a0;
+  --color-btn-bg:       rgba(245, 246, 248, 0.95);
+  --color-btn-border:   rgba(152, 168, 188, 0.5);
+  --color-btn-text:     #242838;
+}
+
+[data-theme="pet-purple"] {
+  --color-bg:           #f8f4ff;
+  --color-bg-secondary: #ead8f8;
+  --color-bg-card:      rgba(248, 244, 255, 0.95);
+  --color-accent:       #9060c8;
+  --color-accent-light: #d0b8f0;
+  --color-accent-ultra: #f4f0ff;
+  --color-line:         #b088e0;
+  --color-text:         #2c1050;
+  --color-text-muted:   #7848a8;
+  --color-border:       rgba(176, 136, 224, 0.4);
+  --color-shadow:       rgba(144, 96, 200, 0.15);
+  --color-nav:          rgba(248, 244, 255, 0.96);
+  --color-heart:        #9060c8;
+  --color-btn-bg:       rgba(248, 244, 255, 0.95);
+  --color-btn-border:   rgba(176, 136, 224, 0.5);
+  --color-btn-text:     #2c1050;
+}
+
+/* ─── Tema Menino (Azul Bebê) ──────────────────────────────── */
+[data-theme="boy"] {
+  --color-bg:           #f0f8ff;
+  --color-bg-secondary: #d8ecfa;
+  --color-bg-card:      rgba(240, 248, 255, 0.95);
+  --color-accent:       #5a9bd4;
+  --color-accent-light: #c5e0f5;
+  --color-accent-ultra: #f0f8ff;
+  --color-line:         #82b8e5;
+  --color-text:         #1a3a5c;
+  --color-text-muted:   #6a92b8;
+  --color-border:       rgba(130, 184, 229, 0.4);
+  --color-shadow:       rgba(90, 155, 212, 0.18);
+  --color-nav:          rgba(240, 248, 255, 0.96);
+  --color-heart:        #5a9bd4;
+  --color-btn-bg:       rgba(240, 248, 255, 0.95);
+  --color-btn-border:   rgba(130, 184, 229, 0.5);
+  --color-btn-text:     #1a3a5c;
+}
+
+
+/* ─── 2. RESET & BASE ─────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  line-height: 1.7;
+  transition:
+    background-color var(--t-slow),
+    color var(--t-smooth);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: none;
+}
+
+/* ─── 3. CURSOR CORAÇÃO ───────────────────────────────────── */
+
+/* Esconde o cursor nativo em dispositivos com mouse */
+@media (pointer: fine) {
+  html, html * {
+    cursor: none !important;
+  }
+}
+
+/* Elemento do cursor personalizado */
+#heart-cursor {
+  position: fixed;
+  top: -120px;
+  left: -120px;
+  pointer-events: none;
+  z-index: 999999;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--color-heart);
+  transform: translate(-50%, -50%) scale(1);
+  transition:
+    color var(--t-slow),
+    transform 0.12s ease,
+    opacity 0.2s ease;
+  user-select: none;
+  will-change: left, top;
+  opacity: 0;
+}
+
+#heart-cursor.visible {
+  opacity: 1;
+}
+
+#heart-cursor.clicking {
+  transform: translate(-50%, -50%) scale(0.75);
+}
+
+/* Em telas touch não aparece */
+@media (pointer: coarse) {
+  #heart-cursor { display: none; }
+}

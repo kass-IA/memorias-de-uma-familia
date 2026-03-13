@@ -1,0 +1,190 @@
+/* ============================================================
+   MEMÓRIAS DE UMA FAMÍLIA — pet.css
+   Estilos específicos da página de pets
+   ============================================================ */
+
+/* ─── Grid de família de pets ───────────────────────────────── */
+.pets-family-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  gap: var(--sp-lg);
+}
+
+.pet-member-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-lg) var(--sp-md);
+  text-align: center;
+  box-shadow: 0 4px 16px var(--color-shadow);
+  transition: all var(--t-fast), background var(--t-smooth);
+}
+
+.pet-member-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px var(--color-shadow);
+}
+
+.pet-member-card .photo-circle {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto var(--sp-md);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--color-accent-ultra);
+  border: 3px solid var(--color-accent-light);
+  box-shadow: 0 8px 30px var(--color-shadow);
+  transition: border-color var(--t-smooth), box-shadow var(--t-smooth);
+}
+
+.pet-member-card .photo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-full);
+}
+
+/* Card de adição de pet futuro */
+.pet-add-card {
+  border-style: dashed;
+  opacity: 0.6;
+  cursor: default;
+}
+
+.pet-add-card:hover {
+  transform: none;
+  box-shadow: 0 4px 16px var(--color-shadow);
+}
+
+.pet-add-label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: var(--sp-xs);
+}
+
+/* Destaque de preferências (comida / lugar) */
+.pref-card-highlight {
+  border-left: 3px solid var(--color-accent);
+}
+
+@media (max-width: 640px) {
+  .pets-family-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+/* ─── Cards com cor definida ─────────────────────────────────── */
+.pet-member-card[data-pet-color] {
+  cursor: pointer;
+  background: var(--swatch-bg, var(--color-bg-card));
+  border-color: var(--swatch-border, var(--color-border));
+}
+
+.pet-member-card[data-pet-color] .photo-circle {
+  border-color: var(--swatch-light, var(--color-accent-light));
+  background: var(--swatch-ultra, var(--color-accent-ultra));
+}
+
+.pet-member-card[data-pet-color="green"] {
+  --swatch-bg:     #f2faf2;
+  --swatch-border: rgba(90, 170, 90, 0.35);
+  --swatch-light:  #b8e0b8;
+  --swatch-ultra:  #eef8ee;
+}
+.pet-member-card[data-pet-color="blue"] {
+  --swatch-bg:     #eef6fc;
+  --swatch-border: rgba(80, 150, 204, 0.35);
+  --swatch-light:  #b0d4f0;
+  --swatch-ultra:  #e8f4fc;
+}
+.pet-member-card[data-pet-color="pink"] {
+  --swatch-bg:     #fff0f6;
+  --swatch-border: rgba(224, 104, 154, 0.35);
+  --swatch-light:  #f8c0d8;
+  --swatch-ultra:  #fff5f8;
+}
+.pet-member-card[data-pet-color="red"] {
+  --swatch-bg:     #fff3f3;
+  --swatch-border: rgba(204, 80, 80, 0.35);
+  --swatch-light:  #f0b8b8;
+  --swatch-ultra:  #fff0f0;
+}
+.pet-member-card[data-pet-color="yellow"] {
+  --swatch-bg:     #fffdf0;
+  --swatch-border: rgba(200, 160, 48, 0.35);
+  --swatch-light:  #ecd890;
+  --swatch-ultra:  #fffaea;
+}
+.pet-member-card[data-pet-color="gray"] {
+  --swatch-bg:     #f5f6f8;
+  --swatch-border: rgba(120, 136, 160, 0.35);
+  --swatch-light:  #c0c8d8;
+  --swatch-ultra:  #eef0f4;
+}
+.pet-member-card[data-pet-color="purple"] {
+  --swatch-bg:     #f8f4ff;
+  --swatch-border: rgba(144, 96, 200, 0.35);
+  --swatch-light:  #d0b8f0;
+  --swatch-ultra:  #f4f0ff;
+}
+.pet-member-card[data-pet-color="orange"] {
+  --swatch-bg:     #fde8d0a8;
+  --swatch-border: rgba(224, 120, 40, 0.35);
+  --swatch-light:  #fcd4a0b7;
+  --swatch-ultra:  #fff5ea4b;
+}
+
+/* ─── Patinha decorativa de fundo ───────────────────────────── */
+.pet-bg-paw {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 620px;
+  height: 620px;
+  color: var(--color-accent);
+  opacity: 0.055;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  transform: translate(-50%, -50%) rotate(-18deg);
+}
+
+.pet-bg-paw svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── Seletor de cores no formulário de pet ──────────────────── */
+.pet-color-picker {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.pet-color-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: transform var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast);
+  outline: none;
+  padding: 0;
+}
+
+.pet-color-swatch:hover {
+  transform: scale(1.2);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+.pet-color-swatch.selected {
+  border-color: var(--color-text);
+  transform: scale(1.15);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.22);
+}
