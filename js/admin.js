@@ -7,8 +7,7 @@
   'use strict';
 
   /* ─── Credenciais ─────────────────────────────────────────── */
-  const ADMIN_EMAIL = 'Geração2026@gmail.com';
-  const ADMIN_PASS  = 'NãoContemasenhaparaninguem100@';
+  
 
   /* ─── Chaves localStorage / sessionStorage ────────────────── */
   const KEY_SESSION  = 'adminSession';
